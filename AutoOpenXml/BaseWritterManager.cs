@@ -7,12 +7,10 @@ namespace AutoOpenXml
 {
     public class BaseWritterManager<T> : BaseDataProcessor<T> where T : new()
     {
-        private List<string> Columns { get; set; }
         private int CurrentRowIndex { get; set; } = 1;
 
         internal void WriteFile()
         {
-            Columns = DataToExport.First().Select(x => x.Key).ToList();
             WriteHeaders();
             WriteContentLines();
         }
@@ -21,7 +19,7 @@ namespace AutoOpenXml
         {
             foreach (var column in Columns)
             {
-                SetCellValue(column, column);
+                SetCellValue(column.Index, column.Label);
             }
             CurrentRowIndex++;
         }
@@ -32,21 +30,26 @@ namespace AutoOpenXml
             {
                 foreach (var column in Columns)
                 {
-                    rowData.TryGetValue(column, out var value);
-                    SetCellValue(column, value);
+                    rowData.TryGetValue(column.Label, out var value);
+                    SetCellValue(column.Index, value.Value, value.Type);
                 }
                 CurrentRowIndex++;
             }
         }
+        private void SetCellValue(int columnIndex, string value, ColumnTypes type = ColumnTypes.Text)
+        {
+            var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
 
-        private int GetColumnIndex(string column)
-        {
-            return Columns.FindIndex(x => x == column) + 1;
-        }
-        private void SetCellValue(string column, string value)
-        {
-            var columnIndex = GetColumnIndex(column);
-            ActiveWorksheet.Cell(CurrentRowIndex, columnIndex).Value = value;
+            cell.Value = value;
+
+            if (type == ColumnTypes.Text)
+                cell.DataType = ClosedXML.Excel.XLDataType.Text;
+
+            if (type == ColumnTypes.Number)
+                cell.DataType = ClosedXML.Excel.XLDataType.Number;
+
+            if (type == ColumnTypes.DateTime)
+                cell.DataType = ClosedXML.Excel.XLDataType.DateTime;
         }
     }
 }

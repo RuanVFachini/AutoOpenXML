@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using AutoOpenXml.Models;
 using AutoOpenXml.Utils;
 
 namespace AutoOpenXml
@@ -16,18 +17,22 @@ namespace AutoOpenXml
 
         internal void ProcessData()
         {
-            DataToExport = new List<Dictionary<string, string>>();
+            DataToExport = new List<Dictionary<string, DataCellValue>>();
+            Columns = Properties.GetInfoColumns();
 
             foreach (var rowData in Data)
             {
-                var newLine = new Dictionary<string, string>();
+                var newLine = new Dictionary<string, DataCellValue>();
 
-                foreach (var prop in Properties)
+                foreach (var prop in Columns)
                 {
-                    var columnName = GetColumnName(prop);
-                    var columnValue = GetColumnValue(rowData, prop);
+                    var columnValue = new DataCellValue()
+                    {
+                        Type = prop.Type,
+                        Value = GetColumnValue(rowData, prop)
+                    };
 
-                    newLine.Add(columnName, columnValue);
+                    newLine.Add(prop.Label, columnValue);
                 }
 
                 DataToExport.Add(newLine);
@@ -37,20 +42,13 @@ namespace AutoOpenXml
 
         internal string GetColumnValue(
            T rowData,
-            PropertyInfo prop)
+            ColumnInfo prop)
         {
-            return (string) rowData
+            return rowData
                 .GetType()
                 .GetProperty(prop.Name)
-                .GetValue(rowData);
-        }
-
-        internal string GetColumnName(PropertyInfo prop)
-        {
-            return (string) prop.CustomAttributes
-                .First(x => x.AttributeType == typeof(ExportColumnAttribute))
-                .ConstructorArguments[0]
-                .Value;
+                .GetValue(rowData)
+                .ToString();
         }
     }
 }

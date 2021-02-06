@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
 using System.Text;
 
@@ -13,5 +14,6 @@ namespace AutoOpenXml.Utils
             var yIndex = y.GetFistColumnIndex();
             return xIndex > yIndex ? 1 : xIndex < yIndex ? -1 : 0;
         }
+
     }
 }
