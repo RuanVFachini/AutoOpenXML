@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using AutoOpenXml;
@@ -7,9 +8,9 @@ using ClosedXML.Excel;
 using FluentAssertions;
 using NUnit.Framework;
 
-namespace AutoOpenXmlTest.Cases.ExportIntProperty
+namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
 {
-    public class ExportIntPropertyTest
+    public class ExportDateTimePropertyTest
     {
         [SetUp]
         public void Setup() { }
@@ -17,7 +18,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
         [Test]
         public void ShouldExportExcelFileWithNumberColumn()
         {
-            var stream = new AutoOpenXmlManager<ModelIntProperty>()
+            var stream = new AutoOpenXmlManager<ModelDateTimeProperty>()
                             .Init()
                             .SetData(Variables.Data.ToList())
                             .StartProcess();
@@ -28,8 +29,8 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
             worksheet.Should().NotBeNull();
 
             worksheet.Cell(1, 1).Value.ToString().Should().BeEquivalentTo(Variables.FieldName);
-            worksheet.Cell(2, 1).Value.Should().BeEquivalentTo(Variables.Data[0].Age);
-            worksheet.Cell(3, 1).Value.Should().BeEquivalentTo(Variables.Data[1].Age);
+            worksheet.Cell(2, 1).Value.Should().BeEquivalentTo(Variables.Data[0].BirthDay);
+            worksheet.Cell(3, 1).Value.Should().BeEquivalentTo(Variables.Data[1].BirthDay);
         }
     }
 }

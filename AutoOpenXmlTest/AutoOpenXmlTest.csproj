@@ -18,4 +18,8 @@
     <ProjectReference Include="..\AutoOpenXml\AutoOpenXml.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Cases\ExportOrderedProperties\" />
+  </ItemGroup>
+
 </Project>

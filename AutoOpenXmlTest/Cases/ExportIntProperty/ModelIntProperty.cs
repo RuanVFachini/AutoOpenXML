@@ -9,7 +9,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
     internal class ModelIntProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.NameField, 1, ColumnTypes.Number)]
+        [ExportColumn(Variables.FieldName, 1, ColumnTypes.Int)]
         public int Age { get; set; }
 
         public ModelIntProperty() { }
@@ -24,7 +24,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
     internal static class Variables
     {
         public const string WorksheetName = "Nova Aba";
-        public const string NameField = "Idade da Pessoa";
+        public const string FieldName = "Idade da Pessoa";
         public static readonly ModelIntProperty[] Data = {
             new ModelIntProperty("Joao", 15),
             new ModelIntProperty("Carlos", 32),

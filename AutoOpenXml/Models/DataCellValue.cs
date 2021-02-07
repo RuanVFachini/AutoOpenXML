@@ -6,7 +6,7 @@ namespace AutoOpenXml.Models
 {
     internal class DataCellValue
     {
-        public string Value { get; set; }
+        public Object Value { get; set; }
         public ColumnTypes Type { get; set; }
     }
 }

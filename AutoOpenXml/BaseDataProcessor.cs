@@ -26,10 +26,10 @@ namespace AutoOpenXml
 
                 foreach (var prop in Columns)
                 {
-                    var columnValue = new DataCellValue()
+                    var columnValue = new DataCellValue ()
                     {
                         Type = prop.Type,
-                        Value = GetColumnValue(rowData, prop)
+                        Value = GetColumnValueByType(rowData, prop)
                     };
 
                     newLine.Add(prop.Label, columnValue);
@@ -40,15 +40,25 @@ namespace AutoOpenXml
             
         }
 
-        internal string GetColumnValue(
+        private Object GetColumnValueByType(T rowData, ColumnInfo prop)
+        {
+            if (prop.Type == ColumnTypes.Int || prop.Type == ColumnTypes.Decimal)
+                return GetColumnValue<Object>(rowData, prop);
+            
+            if (prop.Type == ColumnTypes.DateTime)
+                return GetColumnValue<DateTime>(rowData, prop);
+
+            return GetColumnValue<string>(rowData, prop);
+        }
+
+        internal R GetColumnValue<R>(
            T rowData,
             ColumnInfo prop)
         {
-            return rowData
+            return (R) rowData
                 .GetType()
                 .GetProperty(prop.Name)
-                .GetValue(rowData)
-                .ToString();
+                .GetValue(rowData);
         }
     }
 }

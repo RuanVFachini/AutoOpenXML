@@ -26,7 +26,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
 
             worksheet.Should().NotBeNull();
 
-            worksheet.Cell(1, 1).Value.ToString().Should().BeEquivalentTo(Variables.NameField);
+            worksheet.Cell(1, 1).Value.ToString().Should().BeEquivalentTo(Variables.FieldName);
             worksheet.Cell(2, 1).Value.ToString().Should().BeEquivalentTo(Variables.Data[0].Name);
             worksheet.Cell(3, 1).Value.ToString().Should().BeEquivalentTo(Variables.Data[1].Name);
         }

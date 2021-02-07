@@ -8,7 +8,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
     [ExportWorkSheet(Variables.WorksheetName)]
     internal class ModelStringProperty
     {
-        [ExportColumn(Variables.NameField, 1, ColumnTypes.Text)]
+        [ExportColumn(Variables.FieldName, 1, ColumnTypes.Text)]
         public string Name { get; set; }
         public int Age { get; set; }
 
@@ -25,7 +25,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
     internal static class Variables
     {
         public const string WorksheetName = "Nova Aba";
-        public const string NameField = "Nome da Pessoa";
+        public const string FieldName = "Nome da Pessoa";
         public static readonly ModelStringProperty[] Data = {
             new ModelStringProperty("Joao", 15),
             new ModelStringProperty("Carlos", 32),
