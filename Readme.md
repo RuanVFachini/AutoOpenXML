@@ -1,8 +1,8 @@
-# AutoOpenXml
+# AutoOpenXML
 
-## 1 Why this lib exists?
+## 1 Why does this lib exist?
 
-### AutoOpenXml Was created for make easy the exportation of objects collections to the worksheet with theirs correct formats and smallest costs of implementation using  C# attributes annotations in classes and theirs fields
+### Using C# attributes annotations 'AutoOpenXML' was created to smooth the exportation process of object collections to the worksheet, providing the correct formats without great cost of implementation.
 
 ## 2 How to use 
 
