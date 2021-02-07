@@ -5,7 +5,12 @@ VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoOpenXml", "AutoOpenXml\AutoOpenXml.csproj", "{208CB1BF-538E-41D8-871B-8E81856D2692}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoOpenXmlTest", "AutoOpenXmlTest\AutoOpenXmlTest.csproj", "{4856F5C1-0A68-46C7-AC1A-4BAC4B7AAF40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutoOpenXmlTest", "AutoOpenXmlTest\AutoOpenXmlTest.csproj", "{4856F5C1-0A68-46C7-AC1A-4BAC4B7AAF40}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C66698C9-DF9B-4413-AB63-C5ACCF0FAB6E}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.mk = Readme.mk
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
