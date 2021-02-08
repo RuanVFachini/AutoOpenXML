@@ -21,7 +21,7 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
             var stream = new AutoOpenXmlManager<ModelDateTimeProperty>()
                             .Init()
                             .SetData(Variables.Data.ToList())
-                            .StartProcess();
+                            .StartExportProcess();
 
             var workbook = new XLWorkbook(stream);
             workbook.TryGetWorksheet(Variables.WorksheetName, out var worksheet);

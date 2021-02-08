@@ -20,7 +20,7 @@ namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
             var stream = new AutoOpenXmlManager<ModelDecimalProperty>()
                             .Init()
                             .SetData(Variables.Data.ToList())
-                            .StartProcess();
+                            .StartExportProcess();
 
             var workbook = new XLWorkbook(stream);
             workbook.TryGetWorksheet(Variables.WorksheetName, out var worksheet);

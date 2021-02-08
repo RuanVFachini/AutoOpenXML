@@ -19,7 +19,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
             var stream = new AutoOpenXmlManager<ModelStringProperty>()
                             .Init()
                             .SetData(Variables.Data.ToList())
-                            .StartProcess();
+                            .StartExportProcess();
 
             var workbook = new XLWorkbook(stream);
             workbook.TryGetWorksheet(Variables.WorksheetName, out var worksheet);

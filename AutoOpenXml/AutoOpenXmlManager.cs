@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using AutoOpenXml.Exceptions;
 using ClosedXML.Excel;
 
 namespace AutoOpenXml
@@ -26,29 +27,38 @@ namespace AutoOpenXml
 
         public AutoOpenXmlManager<T> SetData(List<T> data)
         {
+            if (data.Count == 0) throw new EmptyObjectListToExportException();
+
             Data = data;
             return this;
         }
 
         internal string ExtractWorksheetName()
         {
-            return (string) (new T())
+            var validClass = (new T())
                 .GetType()
                 .CustomAttributes
-                .First(x => x.AttributeType == typeof(ExportWorkSheetAttribute))
-                .ConstructorArguments[0].Value;
+                .FirstOrDefault(x => x.AttributeType == typeof(ExportWorkSheetAttribute));
+
+            if (validClass != null) return (string) validClass.ConstructorArguments[0].Value;
+
+            throw new MissingExportWorkSheetAttributeException();
         }
 
         internal List<PropertyInfo> ExtractReferenceMapedProperties()
         {
-            return (new T())
+            var properties = (new T())
                 .GetType()
                 .GetProperties()
                 .Where(X => X.HasValidAttributeField())
                 .ToList();
+
+            if (properties != null) return properties;
+
+            throw new MissingExportColumnAttributeException();
         }
 
-        public MemoryStream StartProcess()
+        public MemoryStream StartExportProcess()
         {
             SortFields();
             ProcessData();
