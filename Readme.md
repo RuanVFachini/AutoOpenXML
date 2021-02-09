@@ -46,8 +46,11 @@
     [ExportColumn(
         {propertyLabel : string},
         {columnIndex : int},
-        {columnType : ColumnTypes}
+        {columnType : ColumnTypes},
+        {columnTrasnformFunction : Func<object, object> func}
     )]
+
+
 
 </code>
 

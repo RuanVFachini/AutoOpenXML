@@ -43,12 +43,26 @@ namespace AutoOpenXml
         private Object GetColumnValueByType(T rowData, ColumnInfo prop)
         {
             if (prop.Type == ColumnTypes.Int || prop.Type == ColumnTypes.Decimal)
-                return GetColumnValue<Object>(rowData, prop);
+            {
+                var value = GetColumnValue<Object>(rowData, prop);
+                return prop.Func.Invoke(value);
+            }
+                
             
             if (prop.Type == ColumnTypes.DateTime)
-                return GetColumnValue<DateTime>(rowData, prop);
+            {
+                var value = GetColumnValue<DateTime>(rowData, prop);
+                return (DateTime) prop.Func.Invoke(value);
+            }
 
-            return GetColumnValue<string>(rowData, prop);
+            if (prop.Type == ColumnTypes.Text)
+            {
+                var value = GetColumnValue<string>(rowData, prop);
+                return prop.Func.Invoke(value);
+            }
+
+            return null;
+
         }
 
         internal R GetColumnValue<R>(

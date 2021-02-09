@@ -10,5 +10,6 @@ namespace AutoOpenXml.Models
         public string Name { get; set; }
         public int Index { get; set; }
         public ColumnTypes Type { get; set; }
+        public Func<Object, Object> Func { get; set; }
     }
 }
