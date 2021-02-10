@@ -31,8 +31,7 @@ namespace AutoOpenXml
                     Label = Generics.GetColumnCustomProperty<string>(prop, 0),
                     Index = columnIndex++,
                     Type = Generics.GetColumnCustomProperty<ColumnTypes>(prop, 2),
-                    Name = prop.Name,
-                    Func = Generics.GetColumnCustomProperty<Func<Object, Object>>(prop, 3),
+                    Name = prop.Name
                 });
             }
             return result;
