@@ -20,7 +20,7 @@ namespace AutoOpenXml
             return (int) attribute.ConstructorArguments[1].Value;
         }
 
-        internal static IList<ColumnInfo> GetInfoColumns(this IList<PropertyInfo> properties)
+        internal static IList<ColumnInfo> GetInfoColumns(this IList<PropertyInfo> properties, OperatinoEnum operatino)
         {
             var result = new List<ColumnInfo>();
             int columnIndex = 1;
@@ -29,8 +29,8 @@ namespace AutoOpenXml
                 result.Add(new ColumnInfo() 
                 {
                     Label = Generics.GetColumnCustomProperty<string>(prop, 0),
-                    Index = columnIndex++,
-                    Type = Generics.GetColumnCustomProperty<ColumnTypes>(prop, 2),
+                    Index = operatino == OperatinoEnum.Write ? columnIndex++ : Generics.GetColumnCustomProperty<int>(prop, 1),
+                    Type = prop.PropertyType,
                     Name = prop.Name
                 });
             }

@@ -17,7 +17,7 @@ namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
         [Test]
         public void ShouldExportExcelFileWithNumberColumn()
         {
-            var stream = new AutoOpenXmlManager<ModelDecimalProperty>()
+            var stream = new ExportManager<ModelDecimalProperty>()
                             .Init()
                             .SetData(Variables.Data.ToList())
                             .StartExportProcess();

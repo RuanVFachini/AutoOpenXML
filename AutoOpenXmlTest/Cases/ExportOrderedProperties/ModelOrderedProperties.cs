@@ -8,13 +8,13 @@ namespace AutoOpenXmlTest.Cases.ExportOrderedProperties
     [ExportWorkSheet(Variables.WorksheetName)]
     internal class ModelOrderedProperties
     {
-        [ExportColumn(Variables.IdLabel, 2, ColumnTypes.Int)]
+        [ExportColumn(Variables.IdLabel, 2)]
         public int Id { get; set; }
-        [ExportColumn(Variables.NameLabel, 1, ColumnTypes.Text)]
+        [ExportColumn(Variables.NameLabel, 1)]
         public string Name { get; set; }
-        [ExportColumn(Variables.HeightLabel, 4, ColumnTypes.Decimal)]
+        [ExportColumn(Variables.HeightLabel, 4)]
         public decimal Height { get; set; }
-        [ExportColumn(Variables.BirthDateLabel, 3, ColumnTypes.DateTime)]
+        [ExportColumn(Variables.BirthDateLabel, 3)]
         public DateTime BrithDate { get; set; }
 
         public ModelOrderedProperties() { }

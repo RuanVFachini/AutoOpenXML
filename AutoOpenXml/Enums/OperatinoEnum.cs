@@ -4,11 +4,9 @@ using System.Text;
 
 namespace AutoOpenXml
 {
-    public enum ColumnTypes
+    internal enum OperatinoEnum
     {
-        Text,
-        Int,
-        Decimal,
-        DateTime
+        Read = 0,
+        Write = 1
     }
 }

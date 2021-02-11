@@ -9,7 +9,7 @@ namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
     internal class ModelDecimalProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1, ColumnTypes.Decimal)]
+        [ExportColumn(Variables.FieldName, 1)]
         public decimal Salary { get; set; }
 
         public ModelDecimalProperty() { }

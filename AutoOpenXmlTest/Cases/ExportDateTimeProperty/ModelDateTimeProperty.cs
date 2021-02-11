@@ -9,7 +9,7 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
     internal class ModelDateTimeProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1, ColumnTypes.DateTime)]
+        [ExportColumn(Variables.FieldName, 1)]
         public DateTime BirthDay { get; set; }
 
         public ModelDateTimeProperty() { }

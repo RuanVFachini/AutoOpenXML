@@ -7,8 +7,9 @@ using ClosedXML.Excel;
 
 namespace AutoOpenXml
 {
-    public class BaseWritterManager<T> : BaseDataProcessor<T> where T : new()
+    public class WritterManager<T> : ExportProcessor<T> where T : new()
     {
+        internal IXLWorksheet ActiveWorksheet { get; set; }
         private int CurrentRowIndex { get; set; } = 1;
 
         internal void WriteFile()
@@ -21,7 +22,7 @@ namespace AutoOpenXml
         {
             foreach (var column in Columns)
             {
-                SetCellValue(column.Index, column.Label);
+                SetCellValue(column.Index, column.Label, typeof(string));
             }
             CurrentRowIndex++;
         }
@@ -38,35 +39,34 @@ namespace AutoOpenXml
                 CurrentRowIndex++;
             }
         }
-        private void SetCellValue(int columnIndex, Object value, ColumnTypes type = ColumnTypes.Text)
+        private void SetCellValue(int columnIndex, Object value, Type type)
         {
             var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
 
-            if (type == ColumnTypes.Text)
+            if (type == typeof(string))
             {
                 cell.DataType = XLDataType.Text;
                 cell.Value = (string) value;
             }
                 
 
-            if (type == ColumnTypes.Int)
+            if (type == typeof(int))
             {
-                cell.Value = Double.Parse(value.ToString());
+                cell.Value = (int) value;
                 cell.DataType = XLDataType.Number;
             }
 
-            if (type == ColumnTypes.Decimal)
+            if (type == typeof(decimal))
             {
-                cell.Value = Double.Parse(value.ToString());
+                cell.Value = (decimal) value;
                 cell.DataType = XLDataType.Number;
             }
 
 
-            if (type == ColumnTypes.DateTime)
+            if (type == typeof(DateTime))
             {
                 cell.Value = ((DateTime) value);
                 cell.DataType = XLDataType.DateTime;
-                //cell.Style.DateFormat.Format = "dd/mm/yyyy hh:mm:ss";
             }
 
         }

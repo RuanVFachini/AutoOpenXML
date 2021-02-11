@@ -8,7 +8,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
     [ExportWorkSheet(Variables.WorksheetName)]
     internal class ModelStringProperty
     {
-        [ExportColumn(Variables.FieldName, 1, ColumnTypes.Text)]
+        [ExportColumn(Variables.FieldName, 1)]
         public string Name { get; set; }
         public int Age { get; set; }
 

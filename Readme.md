@@ -14,7 +14,7 @@
     internal class ModelDateTimeProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1, ColumnTypes.DateTime)]
+        [ExportColumn(Variables.FieldName, 1)]
         public DateTime BirthDay { get; set; }
 
         public ModelDateTimeProperty() { }
@@ -45,27 +45,18 @@
 
     [ExportColumn(
         {propertyLabel : string},
-        {columnIndex : int},
-        {columnType : ColumnTypes},
-        {columnTrasnformFunction : Func<object, object> func}
+        {columnIndex : int}
     )]
 
 
 
 </code>
 
-### 2.3 Column Types:
+### 2.3 Suported Types:
 
-<code>
-
-    public enum ColumnTypes
-    {
-        Text,
-        Int,
-        Decimal,
-        DateTime
-    }
-
-</code>
+    -string
+    -int
+    -decimal
+    -DateTime
 
 ## 3 More Details, see test cases on test project

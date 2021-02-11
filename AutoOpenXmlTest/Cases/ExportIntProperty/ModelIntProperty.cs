@@ -9,7 +9,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
     internal class ModelIntProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1, ColumnTypes.Int)]
+        [ExportColumn(Variables.FieldName, 1)]
         public int Age { get; set; }
 
         public ModelIntProperty() { }

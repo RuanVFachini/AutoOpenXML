@@ -17,7 +17,7 @@ namespace AutoOpenXmlTest.Cases.ExportOrderedProperties
         [Test]
         public void ShouldExportExcelFileWithNumberColumn()
         {
-            var stream = new AutoOpenXmlManager<ModelOrderedProperties>()
+            var stream = new ExportManager<ModelOrderedProperties>()
                             .Init()
                             .SetData(Variables.Data.ToList())
                             .StartExportProcess();
