@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using AutoOpenXml.Models;
 using ClosedXML.Excel;
 
 namespace AutoOpenXml
@@ -10,15 +11,27 @@ namespace AutoOpenXml
         internal IXLWorksheet ActiveWorksheet { get; set; }
         private int CurrentRowIndex { get; set; } = 1;
 
-        internal void NextRow()
+        internal bool NextRow()
         {
+            if (IsLastRow()) return false;
             CurrentRowIndex++;
+            return true;
+            
         }
 
-        internal string TryReadColumnInfo(int index)
+        private bool IsLastRow()
         {
-            var value = ActiveWorksheet.Cell(CurrentRowIndex, index).Value ?? "";
-            return value.ToString();
+            return ActiveWorksheet.RowCount() - CurrentRowIndex == 0;
+        }
+
+        internal CellRead TryReadColumnInfo(int index)
+        {
+            var cell = ActiveWorksheet.Cell(CurrentRowIndex, index);
+            return new CellRead()
+            {
+                Type = cell.DataType,
+                Value = cell.Value ?? null
+            };
         }
     }
 }

@@ -30,6 +30,13 @@ namespace AutoOpenXml
             return this;
         }
 
+        public ImportManager<T> SetStringDateFormat(string stringDateFormat)
+        {
+            StringDateFormat = stringDateFormat;
+            return this;
+        }
+        
+
         public IList<T> StartImportProcess()
         {
             Properties.SortFields();
