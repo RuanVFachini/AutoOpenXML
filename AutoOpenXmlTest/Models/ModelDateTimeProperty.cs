@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using AutoOpenXml;
 
-namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
+namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(Variables.WorksheetName)]
-    internal class ModelDateTimeProperty
+    [ExportWorkSheet(VariablesModelDateTimeProperty.WorksheetName)]
+    public class ModelDateTimeProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1)]
+        [ExportColumn(VariablesModelDateTimeProperty.FieldName, 1)]
         public DateTime BirthDay { get; set; }
 
         public ModelDateTimeProperty() { }
@@ -21,7 +21,7 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
         }
     }
 
-    internal static class Variables
+    public static class VariablesModelDateTimeProperty
     {
         public const string WorksheetName = "Nova Aba";
         public const string FieldName = "Aniversário da Pessoa";

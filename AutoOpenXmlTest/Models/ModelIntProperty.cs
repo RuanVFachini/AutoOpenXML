@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using AutoOpenXml;
 
-namespace AutoOpenXmlTest.Cases.ExportIntProperty
+namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(Variables.WorksheetName)]
-    internal class ModelIntProperty
+    [ExportWorkSheet(VariablesModelIntProperty.WorksheetName)]
+    public class ModelIntProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1)]
+        [ExportColumn(VariablesModelIntProperty.FieldName, 1)]
         public int Age { get; set; }
 
         public ModelIntProperty() { }
@@ -21,7 +21,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
         }
     }
 
-    internal static class Variables
+    public static class VariablesModelIntProperty
     {
         public const string WorksheetName = "Nova Aba";
         public const string FieldName = "Idade da Pessoa";

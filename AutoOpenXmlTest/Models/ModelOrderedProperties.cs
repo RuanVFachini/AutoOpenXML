@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using AutoOpenXml;
 
-namespace AutoOpenXmlTest.Cases.ExportOrderedProperties
+namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(Variables.WorksheetName)]
-    internal class ModelOrderedProperties
+    [ExportWorkSheet(VariablesModelOrderedProperties.WorksheetName)]
+    public class ModelOrderedProperties
     {
-        [ExportColumn(Variables.IdLabel, 2)]
+        [ExportColumn(VariablesModelOrderedProperties.IdLabel, 2)]
         public int Id { get; set; }
-        [ExportColumn(Variables.NameLabel, 1)]
+        [ExportColumn(VariablesModelOrderedProperties.NameLabel, 1)]
         public string Name { get; set; }
-        [ExportColumn(Variables.HeightLabel, 4)]
+        [ExportColumn(VariablesModelOrderedProperties.HeightLabel, 4)]
         public decimal Height { get; set; }
-        [ExportColumn(Variables.BirthDateLabel, 3)]
+        [ExportColumn(VariablesModelOrderedProperties.BirthDateLabel, 3)]
         public DateTime BrithDate { get; set; }
 
         public ModelOrderedProperties() { }
@@ -27,7 +27,7 @@ namespace AutoOpenXmlTest.Cases.ExportOrderedProperties
         }
     }
 
-    internal static class Variables
+    public static class VariablesModelOrderedProperties
     {
         public const string WorksheetName = "Nova Aba";
         public const string NameLabel = "Nome";

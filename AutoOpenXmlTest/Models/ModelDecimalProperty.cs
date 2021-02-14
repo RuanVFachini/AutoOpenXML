@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using AutoOpenXml;
 
-namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
+namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(Variables.WorksheetName)]
-    internal class ModelDecimalProperty
+    [ExportWorkSheet(VariablesModelDecimalProperty.WorksheetName)]
+    public class ModelDecimalProperty
     {
         public string Name { get; set; }
-        [ExportColumn(Variables.FieldName, 1)]
+        [ExportColumn(VariablesModelDecimalProperty.FieldName, 1)]
         public decimal Salary { get; set; }
 
         public ModelDecimalProperty() { }
@@ -21,7 +21,7 @@ namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
         }
     }
 
-    internal static class Variables
+    public static class VariablesModelDecimalProperty
     {
         public const string WorksheetName = "Nova Aba";
         public const string FieldName = "salario da Pessoa";

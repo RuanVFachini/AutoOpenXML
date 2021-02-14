@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Text;
 using AutoOpenXml;
 
-namespace AutoOpenXmlTest.Cases.ExportStringProperty
+namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(Variables.WorksheetName)]
-    internal class ModelStringProperty
+    [ExportWorkSheet(VariablesModelStringProperty.WorksheetName)]
+    public class ModelStringProperty
     {
-        [ExportColumn(Variables.FieldName, 1)]
+        [ExportColumn(VariablesModelStringProperty.FieldName, 1)]
         public string Name { get; set; }
         public int Age { get; set; }
 
@@ -22,7 +22,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
         }
     }
 
-    internal static class Variables
+    public static class VariablesModelStringProperty
     {
         public const string WorksheetName = "Nova Aba";
         public const string FieldName = "Nome da Pessoa";
