@@ -28,9 +28,9 @@ namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
 
             worksheet.Should().NotBeNull();
 
-            worksheet.Cell(1, 1).Value.ToString().Should().BeEquivalentTo(VariablesModelDecimalProperty.FieldName);
-            worksheet.Cell(2, 1).Value.Should().BeEquivalentTo(VariablesModelDecimalProperty.Data[0].Salary);
-            worksheet.Cell(3, 1).Value.Should().BeEquivalentTo(VariablesModelDecimalProperty.Data[1].Salary);
+            worksheet.Cell(1, 2).Value.ToString().Should().BeEquivalentTo(VariablesModelDecimalProperty.FieldName);
+            worksheet.Cell(2, 2).Value.Should().BeEquivalentTo(VariablesModelDecimalProperty.Data[0].Salary);
+            worksheet.Cell(3, 2).Value.Should().BeEquivalentTo(VariablesModelDecimalProperty.Data[1].Salary);
         }
     }
 }

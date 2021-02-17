@@ -22,8 +22,6 @@
     <Folder Include="Cases\ImportIntProperty\" />
     <Folder Include="Cases\ImportDecimalProperty\" />
     <Folder Include="Cases\ImportStringProperty\" />
-    <Folder Include="Cases\ImportDateTimeProperty\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

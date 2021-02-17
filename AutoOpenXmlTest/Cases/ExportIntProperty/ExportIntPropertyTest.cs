@@ -28,9 +28,9 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
 
             worksheet.Should().NotBeNull();
 
-            worksheet.Cell(1, 1).Value.ToString().Should().BeEquivalentTo(VariablesModelIntProperty.FieldName);
-            worksheet.Cell(2, 1).Value.Should().BeEquivalentTo(VariablesModelIntProperty.Data[0].Age);
-            worksheet.Cell(3, 1).Value.Should().BeEquivalentTo(VariablesModelIntProperty.Data[1].Age);
+            worksheet.Cell(1, 3).Value.ToString().Should().BeEquivalentTo(VariablesModelIntProperty.FieldName);
+            worksheet.Cell(2, 3).Value.Should().BeEquivalentTo(VariablesModelIntProperty.Data[0].Age);
+            worksheet.Cell(3, 3).Value.Should().BeEquivalentTo(VariablesModelIntProperty.Data[1].Age);
         }
     }
 }

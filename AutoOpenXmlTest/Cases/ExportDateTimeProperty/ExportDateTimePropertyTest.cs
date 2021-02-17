@@ -29,9 +29,9 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
 
             worksheet.Should().NotBeNull();
 
-            worksheet.Cell(1, 1).Value.ToString().Should().BeEquivalentTo(VariablesModelDateTimeProperty.FieldName);
-            worksheet.Cell(2, 1).Value.Should().BeEquivalentTo(VariablesModelDateTimeProperty.Data[0].BirthDay);
-            worksheet.Cell(3, 1).Value.Should().BeEquivalentTo(VariablesModelDateTimeProperty.Data[1].BirthDay);
+            worksheet.Cell(1, 4).Value.ToString().Should().BeEquivalentTo(VariablesModelDateTimeProperty.FieldName);
+            worksheet.Cell(2, 4).Value.Should().BeEquivalentTo(VariablesModelDateTimeProperty.Data[0].BirthDay);
+            worksheet.Cell(3, 4).Value.Should().BeEquivalentTo(VariablesModelDateTimeProperty.Data[1].BirthDay);
         }
     }
 }
