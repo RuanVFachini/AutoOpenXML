@@ -101,7 +101,7 @@ namespace AutoOpenXml
             }
             else if (value.Type == XLDataType.Number)
             {
-                valueToSet = value.Value != null ? (decimal) value.Value : 0;
+                valueToSet = value.Value != null ? Convert.ToDecimal(value.Value) : 0;
             }
             else
             {
@@ -120,7 +120,7 @@ namespace AutoOpenXml
                 valueToSet = value.Value != null ? int.Parse((string) value.Value) : 0;
             } else if (value.Type == XLDataType.Number)
             {
-                valueToSet = value.Value != null ? (int) value.Value : 0;
+                valueToSet = value.Value != null ? Convert.ToInt32(value.Value) : 0;
             } else
             {
                 ThrowImportColumnParseException(prop, value);

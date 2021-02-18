@@ -26,17 +26,27 @@ namespace AutoOpenXml
             int columnIndex = 1;
             foreach (var prop in properties)
             {
+                columnIndex = GetPropIndex(operatino, prop, columnIndex);
+
                 result.Add(new ColumnInfo() 
                 {
                     Label = Generics.GetColumnCustomProperty<string>(prop, 0),
-                    Index = operatino == OperatinoEnum.Write ? columnIndex++ : Generics.GetColumnCustomProperty<int>(prop, 1),
+                    Index = columnIndex,
                     Type = prop.PropertyType,
                     Name = prop.Name
                 });
+
+                columnIndex++;
             }
             return result;
         }
 
-        
+        private static int GetPropIndex(OperatinoEnum operatino, PropertyInfo prop, int columnIndex)
+        {
+            var proColumnIndex = Generics.GetColumnCustomProperty<int>(prop, 1);
+            return operatino == OperatinoEnum.Write ? 
+                (proColumnIndex > -1 ? proColumnIndex : columnIndex) : 
+                Generics.GetColumnCustomProperty<int>(prop, 1);
+        }
     }
 }

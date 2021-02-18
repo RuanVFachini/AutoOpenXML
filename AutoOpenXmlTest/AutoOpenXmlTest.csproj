@@ -18,10 +18,4 @@
     <ProjectReference Include="..\AutoOpenXml\AutoOpenXml.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Cases\ImportIntProperty\" />
-    <Folder Include="Cases\ImportDecimalProperty\" />
-    <Folder Include="Cases\ImportStringProperty\" />
-  </ItemGroup>
-
 </Project>

@@ -1,24 +1,23 @@
-﻿using AutoOpenXml;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using AutoOpenXml;
 using AutoOpenXmlTest.Models;
 using AutoOpenXmlTest.Utils;
 using FluentAssertions;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
-namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
+namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
 {
-    public class ImportDateTimePropertyTest
+    public class ImportDecimalProperty
     {
         [SetUp]
         public void Setup() { }
 
         [Test]
-        public void ShouldImportDateTimeFieldFromDateColumn()
+        public void ShouldImportDecimalFieldFromNumberColumn()
         {
-            var result = new ImportManager<ModelDateTimeProperty>()
+            var result = new ImportManager<ModelDecimalProperty>()
                 .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
                 .Init()
                 .StartImportProcess();
@@ -26,7 +25,7 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(1);
             result[0].Name.Should().BeNull();
-            result[0].BirthDay.Should().BeSameDateAs(new DateTime(1991, 08, 28));
+            result[0].Salary.Should().Be((decimal) 12233.45);
         }
     }
 }

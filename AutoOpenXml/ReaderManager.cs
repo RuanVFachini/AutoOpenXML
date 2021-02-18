@@ -21,7 +21,7 @@ namespace AutoOpenXml
 
         private bool IsLastRow()
         {
-            return ActiveWorksheet.RowCount() - CurrentRowIndex == 0;
+            return ActiveWorksheet.LastRowUsed().RowNumber() - CurrentRowIndex == 0;
         }
 
         internal CellRead TryReadColumnInfo(int index)
