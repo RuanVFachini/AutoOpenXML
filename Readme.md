@@ -1,4 +1,5 @@
-# AutoOpenXML
+# AutoOpenXML 
+https://github.com/RuanVFachini/AutoOpenXML
 
 ## 1 Why does this lib exist?
 
@@ -59,4 +60,64 @@
     -decimal
     -DateTime
 
-## 3 More Details, see test cases on test project
+## 3 Example
+
+### 3.1 Model Class Exemple:
+
+<code>
+
+
+    [ExportWorkSheet("WorksheetName")]
+    public class ModelOrderedProperties
+    {
+        [ExportColumn("Code", 2)]
+        public int Id { get; set; }
+        [ExportColumn("Name", 1)]
+        public string Name { get; set; }
+        [ExportColumn("Height", 4)]
+        public decimal Height { get; set; }
+        [ExportColumn("BirthDateLabel", 3)]
+        public DateTime BrithDate { get; set; }
+
+        public ModelOrderedProperties() { }
+        public ModelOrderedProperties(
+            int id,
+            string name,
+            decimal height,
+            DateTime brithDate)
+        {
+            Id = id;
+            Name = name;
+            Height = height;
+            BrithDate = brithDate;
+        }
+    }
+</code>
+
+### 3.1 Export Class Exemple:
+
+<code>
+
+    var stream = new ExportManager<ModelOrderedProperties>()
+                        .Init()
+                        .SetData(Data.ToList())
+                        .StartExportProcess();
+
+    var workbook = new XLWorkbook(stream);
+
+</code>
+
+### 3.1 Import Class Exemple:
+
+<code>
+
+    var result = new ImportManager<ModelDateTimeProperty>()
+                    .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
+                    .Init()
+                    .StartImportProcess();
+
+</code>
+
+## 4 Obs.:
+
+* DateTime properties will be exported like DateTime Excel column format. For importation the same column type is required.
