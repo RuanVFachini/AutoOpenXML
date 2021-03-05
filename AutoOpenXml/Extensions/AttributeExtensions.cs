@@ -1,9 +1,8 @@
-﻿using System;
+﻿using AutoOpenXml.Models;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using AutoOpenXml.Models;
 
 namespace AutoOpenXml
 {
@@ -33,7 +32,8 @@ namespace AutoOpenXml
                     Label = Generics.GetColumnCustomProperty<string>(prop, 0),
                     Index = columnIndex,
                     Type = prop.PropertyType,
-                    Name = prop.Name
+                    Name = prop.Name,
+                    HeaderBackgroundColor = GetPropHeaderBackgroundColor(prop)
                 });
 
                 columnIndex++;
@@ -47,6 +47,16 @@ namespace AutoOpenXml
             return operatino == OperatinoEnum.Write ? 
                 (proColumnIndex > -1 ? proColumnIndex : columnIndex) : 
                 Generics.GetColumnCustomProperty<int>(prop, 1);
+        }
+
+        private static Color GetPropHeaderBackgroundColor(PropertyInfo prop)
+        {
+            var attribute = Generics.GetExportColumnHeaderBackgoundColorAttribute(prop);
+
+            if (attribute == null)
+                return Color.Transparent;
+
+            return attribute.HeaderBackgroundColor;
         }
     }
 }

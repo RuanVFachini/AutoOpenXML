@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using ClosedXML.Excel;
+﻿using ClosedXML.Excel;
+using System;
+using System.Drawing;
 
 namespace AutoOpenXml
 {
@@ -23,7 +20,10 @@ namespace AutoOpenXml
             foreach (var column in Columns)
             {
                 SetCellValue(column.Index, column.Label, typeof(string));
+
+                SetCellBackgroundColor(column.Index, column.HeaderBackgroundColor);
             }
+
             CurrentRowIndex++;
         }
 
@@ -68,7 +68,13 @@ namespace AutoOpenXml
                 cell.Value = ((DateTime) value);
                 cell.DataType = XLDataType.DateTime;
             }
+        }
 
+        private void SetCellBackgroundColor(int columnIndex, Color color)
+        {
+            var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
+
+            cell.Style.Fill.BackgroundColor = XLColor.FromColor(color);
         }
     }
 }

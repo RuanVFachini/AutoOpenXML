@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
-using System.Text;
 
 namespace AutoOpenXml
 {
@@ -14,6 +11,13 @@ namespace AutoOpenXml
                 .First(x => x.AttributeType == typeof(ExportColumnAttribute))
                 .ConstructorArguments[index]
                 .Value;
+        }
+
+        internal static ExportColumnHeaderBackgoundColorAttribute GetExportColumnHeaderBackgoundColorAttribute(PropertyInfo prop)
+        {
+            return prop.GetCustomAttributes()
+                .FirstOrDefault(x => x is ExportColumnHeaderBackgoundColorAttribute)
+                as ExportColumnHeaderBackgoundColorAttribute;
         }
     }
 }
