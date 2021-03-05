@@ -1,6 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Drawing;
 
 namespace AutoOpenXml.Models
 {
@@ -10,5 +9,6 @@ namespace AutoOpenXml.Models
         public string Name { get; set; }
         public int Index { get; set; }
         public Type Type { get; set; }
+        public Color HeaderBackgroundColor { get; set; }
     }
 }
