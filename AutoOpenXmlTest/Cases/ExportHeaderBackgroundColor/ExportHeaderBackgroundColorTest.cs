@@ -13,7 +13,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
         public void Setup() {}
 
         [Test]
-        public void ShouldExportExcelFileWithTextColumn()
+        public void ShouldExportExcelFileWithHeaderBackgroundColor()
         {
             var data = new List<ModelHeaderBackgroundColor>()
             {
