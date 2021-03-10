@@ -42,14 +42,25 @@ https://github.com/RuanVFachini/AutoOpenXML
 
 #### 2.2.2 Property Attributres:
 
+##### 2.2.2.1 To Export Column:
+
 <code>
 
     [ExportColumn(
         {propertyLabel : string},
         {columnIndex : int}
     )]
+    
+</code>
 
+##### 2.2.2.2 Header Column Background:
 
+<code>
+
+    [ExportColumnHeaderBackgoundColor(
+        {red: int},
+        {green: int},
+        {blue: int})]
 
 </code>
 
@@ -71,15 +82,20 @@ https://github.com/RuanVFachini/AutoOpenXML
     public class ModelOrderedProperties
     {
         [ExportColumn("Code", 2)]
+        [ExportColumnHeaderBackgoundColor(0, 255, 0)]
         public int Id { get; set; }
+
         [ExportColumn("Name", 1)]
         public string Name { get; set; }
+
         [ExportColumn("Height", 4)]
         public decimal Height { get; set; }
+
         [ExportColumn("BirthDateLabel", 3)]
         public DateTime BrithDate { get; set; }
 
         public ModelOrderedProperties() { }
+
         public ModelOrderedProperties(
             int id,
             string name,
