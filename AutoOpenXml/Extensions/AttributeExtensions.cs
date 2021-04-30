@@ -33,8 +33,9 @@ namespace AutoOpenXml
                     Index = columnIndex,
                     Type = prop.PropertyType,
                     Name = prop.Name,
+                    Mask = Generics.GetColumnCustomProperty<string>(prop, 2),
                     HeaderBackgroundColor = GetPropHeaderBackgroundColor(prop)
-                });
+                });;
 
                 columnIndex++;
             }

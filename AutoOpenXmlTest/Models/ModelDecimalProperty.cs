@@ -29,6 +29,6 @@ namespace AutoOpenXmlTest.Models
         public static readonly ModelDecimalProperty[] Data = {
         new ModelDecimalProperty("Joao", (decimal)10.25),
         new ModelDecimalProperty("Carlos", (decimal) 12.584),
-    };
+        };
     }
 }

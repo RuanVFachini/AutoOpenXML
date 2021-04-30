@@ -18,7 +18,7 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
         [Test]
         public void ShouldImportDateTimeFieldFromDateColumn()
         {
-            var result = new ImportManager<ModelDateTimeProperty>()
+            var result = new ImportManagerBuilder<ModelDateTimeProperty>()
                 .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
                 .Init()
                 .StartImportProcess();

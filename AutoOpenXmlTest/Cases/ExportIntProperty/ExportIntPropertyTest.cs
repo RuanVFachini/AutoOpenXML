@@ -18,7 +18,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
         [Test]
         public void ShouldExportExcelFileWithNumberColumn()
         {
-            var stream = new ExportManager<ModelIntProperty>()
+            var stream = new ExportManagerBuilder<ModelIntProperty>()
                             .Init()
                             .SetData(VariablesModelIntProperty.Data.ToList())
                             .StartExportProcess();

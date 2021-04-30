@@ -8,18 +8,18 @@ using ClosedXML.Excel;
 
 namespace AutoOpenXml
 {
-    public class ImportManager<T> : ImportProcessor<T> where T : new()
+    public class ImportManagerBuilder<T> : ImportProcessor<T> where T : new()
     {
         internal IXLWorkbook Workbook { get; set; }
 
-        public ImportManager<T> Init()
+        public ImportManagerBuilder<T> Init()
         {
             Properties = CommonManager.ExtractReferenceMapedProperties<T>();
             ImportedData = new List<T>();
             return this;
         }
 
-        public ImportManager<T> OpenFile(MemoryStream stream, string worksheetName)
+        public ImportManagerBuilder<T> OpenFile(MemoryStream stream, string worksheetName)
         {
             Workbook = new XLWorkbook(stream);
 
@@ -30,7 +30,7 @@ namespace AutoOpenXml
             return this;
         }
 
-        public ImportManager<T> SetStringDateFormat(string stringDateFormat)
+        public ImportManagerBuilder<T> SetStringDateFormat(string stringDateFormat)
         {
             StringDateFormat = stringDateFormat;
             return this;

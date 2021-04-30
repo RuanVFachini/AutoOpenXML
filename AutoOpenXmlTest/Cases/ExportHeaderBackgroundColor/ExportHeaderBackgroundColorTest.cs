@@ -21,7 +21,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
                 new ModelHeaderBackgroundColor("Frodo", 11)
             };
 
-            var stream = new ExportManager<ModelHeaderBackgroundColor>()
+            var stream = new ExportManagerBuilder<ModelHeaderBackgroundColor>()
                             .Init()
                             .SetData(data)
                             .StartExportProcess();

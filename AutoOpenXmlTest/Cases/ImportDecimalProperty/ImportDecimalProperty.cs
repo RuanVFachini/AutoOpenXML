@@ -17,7 +17,7 @@ namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
         [Test]
         public void ShouldImportDecimalFieldFromNumberColumn()
         {
-            var result = new ImportManager<ModelDecimalProperty>()
+            var result = new ImportManagerBuilder<ModelDecimalProperty>()
                 .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
                 .Init()
                 .StartImportProcess();

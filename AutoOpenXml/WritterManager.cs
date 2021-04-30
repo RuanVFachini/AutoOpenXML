@@ -34,12 +34,12 @@ namespace AutoOpenXml
                 foreach (var column in Columns)
                 {
                     rowData.TryGetValue(column.Label, out var value);
-                    SetCellValue(column.Index, value.Value, value.Type);
+                    SetCellValue(column.Index, value.Value, value.Type, column.Mask);
                 }
                 CurrentRowIndex++;
             }
         }
-        private void SetCellValue(int columnIndex, Object value, Type type)
+        private void SetCellValue(int columnIndex, Object value, Type type, string mask = null)
         {
             var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
 
@@ -48,7 +48,6 @@ namespace AutoOpenXml
                 cell.DataType = XLDataType.Text;
                 cell.Value = (string) value;
             }
-                
 
             if (type == typeof(int))
             {
@@ -68,6 +67,9 @@ namespace AutoOpenXml
                 cell.Value = ((DateTime) value);
                 cell.DataType = XLDataType.DateTime;
             }
+
+            if (mask != null)
+                cell.Style.NumberFormat.Format = mask;
         }
 
         private void SetCellBackgroundColor(int columnIndex, Color color)

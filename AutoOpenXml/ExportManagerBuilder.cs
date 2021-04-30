@@ -9,11 +9,11 @@ using ClosedXML.Excel;
 
 namespace AutoOpenXml
 {
-    public class ExportManager<T> : WritterManager<T>  where T : new()
+    public class ExportManagerBuilder<T> : WritterManager<T>  where T : new()
     {
         internal IXLWorkbook Workbook { get; set; }
         
-        public ExportManager<T> Init()
+        public ExportManagerBuilder<T> Init()
         {
             Workbook = new XLWorkbook();
 
@@ -28,7 +28,7 @@ namespace AutoOpenXml
             return this;
         }
 
-        public ExportManager<T> SetData(List<T> data)
+        public ExportManagerBuilder<T> SetData(List<T> data)
         {
             if (data.Count == 0) throw new EmptyObjectListToExportException();
 

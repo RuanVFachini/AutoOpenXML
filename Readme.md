@@ -48,7 +48,8 @@ https://github.com/RuanVFachini/AutoOpenXML
 
     [ExportColumn(
         {propertyLabel : string},
-        {columnIndex : int}
+        {columnIndex : int},
+        {numberFormat : string}
     )]
     
 </code>
@@ -81,7 +82,7 @@ https://github.com/RuanVFachini/AutoOpenXML
     [ExportWorkSheet("WorksheetName")]
     public class ModelOrderedProperties
     {
-        [ExportColumn("Code", 2)]
+        [ExportColumn("Code", 2, "00000")]
         [ExportColumnHeaderBackgoundColor(0, 255, 0)]
         public int Id { get; set; }
 
@@ -114,7 +115,7 @@ https://github.com/RuanVFachini/AutoOpenXML
 
 <code>
 
-    var stream = new ExportManager<ModelOrderedProperties>()
+    var stream = new ExportManagerBuilder<ModelOrderedProperties>()
                         .Init()
                         .SetData(Data.ToList())
                         .StartExportProcess();
@@ -127,7 +128,7 @@ https://github.com/RuanVFachini/AutoOpenXML
 
 <code>
 
-    var result = new ImportManager<ModelDateTimeProperty>()
+    var result = new ImportManagerBuilder<ModelDateTimeProperty>()
                     .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
                     .Init()
                     .StartImportProcess();

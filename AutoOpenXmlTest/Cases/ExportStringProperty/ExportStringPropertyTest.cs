@@ -17,7 +17,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
         [Test]
         public void ShouldExportExcelFileWithTextColumn()
         {
-            var stream = new ExportManager<ModelStringProperty>()
+            var stream = new ExportManagerBuilder<ModelStringProperty>()
                             .Init()
                             .SetData(VariablesModelStringProperty.Data.ToList())
                             .StartExportProcess();

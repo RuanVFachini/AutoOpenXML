@@ -17,7 +17,7 @@ namespace AutoOpenXmlTest.Cases.ImportStringProperty
         [Test]
         public void ShouldImportIntFieldFromNumberColumn()
         {
-            var result = new ImportManager<ModelStringProperty>()
+            var result = new ImportManagerBuilder<ModelStringProperty>()
                 .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
                 .Init()
                 .StartImportProcess();
