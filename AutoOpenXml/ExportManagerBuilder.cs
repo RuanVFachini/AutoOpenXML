@@ -21,6 +21,8 @@ namespace AutoOpenXml
 
             var worksheetName = CommonManager.ExtractWorksheetName<T>();
 
+            TableStyle = CommonManager.ExtractTableStyle<T>();
+
             Workbook.Worksheets.Add(worksheetName);
             Workbook.Worksheets.TryGetWorksheet(worksheetName, out var activeWorkshet);
             ActiveWorksheet = activeWorkshet;

@@ -11,8 +11,19 @@ namespace AutoOpenXml
 
         internal void WriteFile()
         {
+            CreateTable();
             WriteHeaders();
             WriteContentLines();
+        }
+
+        private void CreateTable()
+        {
+            if (TableStyle != null)
+            {
+                var table = ActiveWorksheet.Range(1, 1, Data.Count + 1, Columns.Count).CreateTable();
+                table.Theme = TableStyle;
+            }
+            
         }
 
         internal void WriteHeaders()

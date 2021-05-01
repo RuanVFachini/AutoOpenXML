@@ -5,6 +5,8 @@ using System.Reflection;
 using System.Text;
 using AutoOpenXml.Models;
 using AutoOpenXml.Utils;
+using ClosedXML.Excel;
+using DocumentFormat.OpenXml.Drawing;
 
 namespace AutoOpenXml
 {
@@ -12,6 +14,7 @@ namespace AutoOpenXml
     {
         internal List<PropertyInfo> Properties { get; set; } = null;
         internal List<T> Data { get; set; } = null;
+        internal XLTableTheme TableStyle { get; set; }
         internal List<Dictionary<string, DataCellValue>> DataToExport { get; set; }
         internal IList<ColumnInfo> Columns { get; set; }
 
