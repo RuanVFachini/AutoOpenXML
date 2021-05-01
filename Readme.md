@@ -71,6 +71,9 @@ https://github.com/RuanVFachini/AutoOpenXML
     -int
     -decimal
     -DateTime
+    -int?
+    -decimal?
+    -DateTime?
 
 ## 3 Example
 
