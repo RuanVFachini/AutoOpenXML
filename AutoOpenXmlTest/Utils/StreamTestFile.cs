@@ -14,6 +14,13 @@ namespace AutoOpenXmlTest.Utils
             return stream;
         }
 
+        public static void SaveExternalFile(MemoryStream stream)
+        {
+            FileStream = File.Open(@"C:\temp\output.xls", FileMode.OpenOrCreate);
+            FileStream.Write(stream.ToArray());
+            FileStream.Close();
+        }
+
         public static void CloseFile()
         {
             FileStream.Close();

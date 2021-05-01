@@ -5,17 +5,17 @@ using AutoOpenXml;
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(VariablesModelBoolProperty.WorksheetName)]
+    [ExportWorkSheet(VariablesModelBoolNullableProperty.WorksheetName)]
     public class ModelBoolNullableProperty
     {
         public string Name { get; set; }
 
-        [ExportColumn(VariablesModelBoolProperty.FieldName, 2)]
+        [ExportColumn(VariablesModelBoolNullableProperty.FieldName, 5)]
         public bool? Active { get; set; }
 
         public ModelBoolNullableProperty() { }
 
-        public ModelBoolNullableProperty(string name, bool active)
+        public ModelBoolNullableProperty(string name, bool? active)
         {
             Name = name;
             Active = active;
@@ -28,8 +28,9 @@ namespace AutoOpenXmlTest.Models
         public const string FieldName = "Ativo";
         public const string FieldFormat = "";
         public static readonly ModelBoolNullableProperty[] Data = {
-        new ModelBoolNullableProperty("Joao", true),
-        new ModelBoolNullableProperty("Carlos", false),
+            new ModelBoolNullableProperty("Joao", true),
+            new ModelBoolNullableProperty("Carlos", false),
+            new ModelBoolNullableProperty("André", null)
         };
     }
 }

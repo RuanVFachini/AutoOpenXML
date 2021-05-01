@@ -10,7 +10,7 @@ namespace AutoOpenXmlTest.Models
     {
         public string Name { get; set; }
 
-        [ExportColumn(VariablesModelBoolProperty.FieldName, 2)]
+        [ExportColumn(VariablesModelBoolProperty.FieldName, 5)]
         public bool Active { get; set; }
 
         public ModelBoolProperty() { }

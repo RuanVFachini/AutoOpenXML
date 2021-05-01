@@ -87,7 +87,7 @@ namespace AutoOpenXml
 
         private void ParseToDecimalValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if (value.Value.GetType() == typeof(string) && (string)value.Value == "")
+            if (IsEmptyCell(value))
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, null);
             else if (value.Type == XLDataType.Text)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, decimal.Parse((string)value.Value));
@@ -99,7 +99,7 @@ namespace AutoOpenXml
         
         private void ParseToIntValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if(value.Value.GetType() == typeof(string) && (string) value.Value == "")
+            if(IsEmptyCell(value))
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, null);
             else if (value.Type == XLDataType.Text)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, int.Parse((string)value.Value));
@@ -111,14 +111,22 @@ namespace AutoOpenXml
 
         private void ParseToBoolValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if (value.Value == null)
+            if (IsEmptyCell(value))
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, null);
+            else if (value.Type == XLDataType.Boolean)
+                rowData.GetType().GetProperty(prop.Name).SetValue(rowData, (bool) value.Value);
             else if (value.Type == XLDataType.Text)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, bool.Parse((string) value.Value));
             else if (value.Type == XLDataType.Number)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, Convert.ToBoolean(value.Value));
             else
                 ThrowImportColumnParseException(prop, value);
+        }
+
+        private bool IsEmptyCell(CellRead value)
+        {
+            return (value.Value.GetType() == typeof(string) && (string)value.Value == "")
+                || value.Value == null;
         }
 
         private void ThrowImportColumnParseException(ColumnInfo prop, CellRead value)

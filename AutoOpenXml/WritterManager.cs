@@ -48,7 +48,7 @@ namespace AutoOpenXml
 
             if (type == typeof(bool) || type == typeof(bool?))
                 cell.DataType = XLDataType.Boolean;
-
+                
             if (type == typeof(int) || type == typeof(int?))
                 cell.DataType = XLDataType.Number;
 
