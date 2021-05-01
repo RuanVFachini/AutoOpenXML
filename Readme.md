@@ -36,6 +36,7 @@ https://github.com/RuanVFachini/AutoOpenXML
 
     [ExportWorkSheet(
         {worksheetname : string}
+        {ClosedXml.XLTableTheme.Name : string}
     )]
 
 </code>
