@@ -14,7 +14,7 @@ namespace AutoOpenXmlTest.Models
 
         public ModelDateTimeNullableProperty() { }
 
-        public ModelDateTimeNullableProperty(string name, DateTime birthDay)
+        public ModelDateTimeNullableProperty(string name, DateTime? birthDay)
         {
             Name = name;
             BirthDay = birthDay;
@@ -29,6 +29,7 @@ namespace AutoOpenXmlTest.Models
         public static readonly ModelDateTimeNullableProperty[] Data = {
             new ModelDateTimeNullableProperty("Joao", new DateTime(1991, 8, 28, 10, 30, 50)),
             new ModelDateTimeNullableProperty("Carlos", new DateTime(1992, 7, 30, 10, 30, 50)),
+            new ModelDateTimeNullableProperty("André", null),
         };
     }
 }

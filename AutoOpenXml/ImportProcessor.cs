@@ -52,7 +52,7 @@ namespace AutoOpenXml
 
         private void ParseToDateTimeValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if (value.Value == null)
+            if (value.Value.GetType() == typeof(string) && (string)value.Value == "")
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, null);
             else if (value.Type == XLDataType.DateTime)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, (DateTime) value.Value);
@@ -87,7 +87,7 @@ namespace AutoOpenXml
 
         private void ParseToDecimalValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if (value.Value == null)
+            if (value.Value.GetType() == typeof(string) && (string)value.Value == "")
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, null);
             else if (value.Type == XLDataType.Text)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, decimal.Parse((string)value.Value));
@@ -99,7 +99,7 @@ namespace AutoOpenXml
         
         private void ParseToIntValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if(value.Value == null)
+            if(value.Value.GetType() == typeof(string) && (string) value.Value == "")
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, null);
             else if (value.Type == XLDataType.Text)
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, int.Parse((string)value.Value));

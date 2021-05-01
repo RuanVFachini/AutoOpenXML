@@ -14,7 +14,7 @@ namespace AutoOpenXmlTest.Models
 
         public ModelIntNullableProperty() { }
 
-        public ModelIntNullableProperty(string name, int age)
+        public ModelIntNullableProperty(string name, int? age)
         {
             Name = name;
             Age = age;
@@ -28,6 +28,7 @@ namespace AutoOpenXmlTest.Models
         public static readonly ModelIntNullableProperty[] Data = {
             new ModelIntNullableProperty("Joao", 15),
             new ModelIntNullableProperty("Carlos", 32),
+            new ModelIntNullableProperty("André", null),
         };
     }
 }

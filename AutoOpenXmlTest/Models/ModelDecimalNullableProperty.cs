@@ -14,7 +14,7 @@ namespace AutoOpenXmlTest.Models
 
         public ModelDecimalNullableProperty() { }
 
-        public ModelDecimalNullableProperty(string name, decimal salary)
+        public ModelDecimalNullableProperty(string name, decimal? salary)
         {
             Name = name;
             Salary = salary;
@@ -29,6 +29,7 @@ namespace AutoOpenXmlTest.Models
         public static readonly ModelDecimalNullableProperty[] Data = {
         new ModelDecimalNullableProperty("Joao", (decimal)10.25),
         new ModelDecimalNullableProperty("Carlos", (decimal) 12.584),
+        new ModelDecimalNullableProperty("André", null),
         };
     }
 }

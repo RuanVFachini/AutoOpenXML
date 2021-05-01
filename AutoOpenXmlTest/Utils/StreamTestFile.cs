@@ -8,7 +8,7 @@ namespace AutoOpenXmlTest.Utils
 
         public static MemoryStream GetStreamTestFile()
         {
-            FileStream = File.Open(@"C:\Users\ruan.fachini\source\repos\ObjectToExcelFile\AutoOpenXmlTest\Resources\input.xlsx", FileMode.Open);
+            FileStream = File.Open(@"C:\workspace\projets - Pessoais\AutoOpenXML\AutoOpenXmlTest\Resources\input.xlsx", FileMode.Open);
             var stream = new MemoryStream();
             FileStream.CopyTo(stream);
             return stream;

@@ -23,9 +23,11 @@ namespace AutoOpenXmlTest.Cases.ImportIntProperty
                 .StartImportProcess();
 
             result.Should().NotBeNullOrEmpty();
-            result.Count.Should().Be(1);
+            result.Count.Should().Be(2);
             result[0].Name.Should().BeNull();
             result[0].Age.Should().Be(18);
+            result[1].Name.Should().BeNull();
+            result[1].Age.Should().BeNull();
 
             StreamTestFile.CloseFile();
         }
