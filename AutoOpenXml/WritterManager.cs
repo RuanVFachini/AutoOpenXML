@@ -44,32 +44,24 @@ namespace AutoOpenXml
             var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
 
             if (type == typeof(string))
-            {
                 cell.DataType = XLDataType.Text;
-                cell.Value = (string) value;
-            }
+
+            if (type == typeof(bool) || type == typeof(bool?))
+                cell.DataType = XLDataType.Boolean;
 
             if (type == typeof(int) || type == typeof(int?))
-            {
-                cell.Value = (int) value;
                 cell.DataType = XLDataType.Number;
-            }
 
             if (type == typeof(decimal) || type == typeof(decimal?))
-            {
-                cell.Value = (decimal) value;
                 cell.DataType = XLDataType.Number;
-            }
-
 
             if (type == typeof(DateTime) || type == typeof(DateTime?))
-            {
-                cell.Value = ((DateTime) value);
                 cell.DataType = XLDataType.DateTime;
-            }
 
             if (mask != null && mask != "")
                 cell.Style.NumberFormat.Format = mask;
+
+            cell.Value = value;
         }
 
         private void SetCellBackgroundColor(int columnIndex, Color color)

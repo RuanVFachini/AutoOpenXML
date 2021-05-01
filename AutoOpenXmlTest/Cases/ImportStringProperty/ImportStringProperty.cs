@@ -26,6 +26,8 @@ namespace AutoOpenXmlTest.Cases.ImportStringProperty
             result.Count.Should().Be(1);
             result[0].Age.Should().Be(0);
             result[0].Name.Should().Be("Ruan");
+
+            StreamTestFile.CloseFile();
         }
     }
 }

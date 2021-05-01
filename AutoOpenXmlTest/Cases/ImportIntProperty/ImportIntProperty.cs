@@ -26,6 +26,8 @@ namespace AutoOpenXmlTest.Cases.ImportIntProperty
             result.Count.Should().Be(1);
             result[0].Name.Should().BeNull();
             result[0].Age.Should().Be(18);
+
+            StreamTestFile.CloseFile();
         }
     }
 }

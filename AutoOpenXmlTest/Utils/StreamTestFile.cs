@@ -1,18 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.IO;
 
 namespace AutoOpenXmlTest.Utils
 {
     public static class StreamTestFile
     {
+        public static FileStream FileStream;
+
         public static MemoryStream GetStreamTestFile()
         {
-            var file = File.Open(@"C:\Users\ruan.fachini\source\repos\ObjectToExcelFile\AutoOpenXmlTest\Resources\input.xlsx", FileMode.Open);
+            FileStream = File.Open(@"C:\Users\ruan.fachini\source\repos\ObjectToExcelFile\AutoOpenXmlTest\Resources\input.xlsx", FileMode.Open);
             var stream = new MemoryStream();
-            file.CopyTo(stream);
+            FileStream.CopyTo(stream);
             return stream;
+        }
+
+        public static void CloseFile()
+        {
+            FileStream.Close();
         }
     }
 }

@@ -27,6 +27,8 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
             result.Count.Should().Be(1);
             result[0].Name.Should().BeNull();
             result[0].BirthDay.Should().BeSameDateAs(new DateTime(1991, 08, 28));
+
+            StreamTestFile.CloseFile();
         }
     }
 }
