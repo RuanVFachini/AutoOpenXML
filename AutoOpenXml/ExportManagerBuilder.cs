@@ -28,6 +28,21 @@ namespace AutoOpenXml
             return this;
         }
 
+        public ExportManagerBuilder<T> UseWorkBook(IXLWorkbook workbook)
+        {
+            Workbook = workbook;
+
+            Properties = CommonManager.ExtractReferenceMapedProperties<T>();
+
+            var worksheetName = CommonManager.ExtractWorksheetName<T>();
+
+            Workbook.Worksheets.Add(worksheetName);
+            Workbook.Worksheets.TryGetWorksheet(worksheetName, out var activeWorkshet);
+            ActiveWorksheet = activeWorkshet;
+
+            return this;
+        }
+
         public ExportManagerBuilder<T> SetData(List<T> data)
         {
             if (data.Count == 0) throw new EmptyObjectListToExportException();

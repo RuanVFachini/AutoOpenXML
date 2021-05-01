@@ -29,10 +29,12 @@ namespace AutoOpenXmlTest.Cases.ExportAllTypesWithCustomFormat
 
             worksheet.Should().NotBeNull();
 
-            using (FileStream fs = new FileStream("c:\\temp\\teste.xls", FileMode.OpenOrCreate))
-            {
-                stream.WriteTo(fs);
-            }
+            worksheet.Cell(2, 1).Style.NumberFormat.Format.Should()
+                .Be(VariablesModelExportAllTypesWithCustomFormat.IdFieldFormat);
+            worksheet.Cell(2, 2).Style.NumberFormat.Format.Should()
+                .Be(VariablesModelExportAllTypesWithCustomFormat.PointsFieldFormat);
+            worksheet.Cell(2, 3).Style.NumberFormat.Format.Should()
+                .Be(VariablesModelExportAllTypesWithCustomFormat.DateFieldFormat);
         }
     }
 }
