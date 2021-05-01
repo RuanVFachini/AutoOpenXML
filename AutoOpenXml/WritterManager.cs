@@ -49,26 +49,26 @@ namespace AutoOpenXml
                 cell.Value = (string) value;
             }
 
-            if (type == typeof(int))
+            if (type == typeof(int) || type == typeof(int?))
             {
                 cell.Value = (int) value;
                 cell.DataType = XLDataType.Number;
             }
 
-            if (type == typeof(decimal))
+            if (type == typeof(decimal) || type == typeof(decimal?))
             {
                 cell.Value = (decimal) value;
                 cell.DataType = XLDataType.Number;
             }
 
 
-            if (type == typeof(DateTime))
+            if (type == typeof(DateTime) || type == typeof(DateTime?))
             {
                 cell.Value = ((DateTime) value);
                 cell.DataType = XLDataType.DateTime;
             }
 
-            if (mask != null)
+            if (mask != null && mask != "")
                 cell.Style.NumberFormat.Format = mask;
         }
 

@@ -30,7 +30,6 @@ namespace AutoOpenXml
                 {
                     var value = TryReadColumnInfo(column.Index);
                     SetColumnValue(newRow, column, value);
-
                 }
 
                 ImportedData.Add(newRow);
@@ -39,25 +38,33 @@ namespace AutoOpenXml
 
         private void SetColumnValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if (prop.Type == typeof(int))
+            if (prop.Type == typeof(string))
+                ParseToStringValue(rowData, prop, value);
+            else if (prop.Type == typeof(int))
                 ParseToIntValue(rowData, prop, value);
+            else if (prop.Type == typeof(int?))
+                ParseToIntNullableValue(rowData, prop, value);
             else if (prop.Type == typeof(decimal))
                 ParseToDecimalValue(rowData, prop, value);
-            else if (prop.Type == typeof(string))
-                ParseToStringValue(rowData, prop, value);
+            else if (prop.Type == typeof(decimal?))
+                ParseToDecimalNullableValue(rowData, prop, value);
             else if (prop.Type == typeof(DateTime))
                 ParseToDateTimeValue(rowData, prop, value);
-                
+            else if (prop.Type == typeof(DateTime?))
+                ParseToDateTimeNullableValue(rowData, prop, value);
+
         }
 
         private void ParseToDateTimeValue(T rowData, ColumnInfo prop, CellRead value)
         {
-            if (value.Type == XLDataType.DateTime && value.Value != null)
+            if (value.Type == XLDataType.DateTime 
+                    && value.Value != null)
             {
                 rowData.GetType().GetProperty(prop.Name).SetValue(rowData, (DateTime) value.Value);
             } 
-            else if (value.Type == XLDataType.Text && value.Value != null &&
-                !string.IsNullOrEmpty(StringDateFormat))
+            else if (value.Type == XLDataType.Text 
+                        && value.Value != null 
+                        && !string.IsNullOrEmpty(StringDateFormat))
             {
                 var dateTime = TryParseDateTimeFromStringValue(value.Value.ToString());
                  rowData.GetType().GetProperty(prop.Name).SetValue(rowData, dateTime);
@@ -67,6 +74,30 @@ namespace AutoOpenXml
                 ThrowImportColumnParseException(prop, value);
             }
             
+        }
+
+        private void ParseToDateTimeNullableValue(T rowData, ColumnInfo prop, CellRead value)
+        {
+            DateTime? dateTime = null;
+
+            if (value.Type == XLDataType.DateTime 
+                    && value.Value != null)
+            {
+                dateTime = (DateTime?) value.Value;
+            }
+            else if (value.Type == XLDataType.Text 
+                        && value.Value != null 
+                        && !string.IsNullOrEmpty(StringDateFormat))
+            {
+                dateTime = TryParseDateTimeFromStringValue(value.Value.ToString());
+            }
+            else
+            {
+                ThrowImportColumnParseException(prop, value);
+            }
+
+            rowData.GetType().GetProperty(prop.Name).SetValue(rowData, dateTime);
+
         }
 
         private DateTime TryParseDateTimeFromStringValue(string stringValue)
@@ -111,6 +142,30 @@ namespace AutoOpenXml
             rowData.GetType().GetProperty(prop.Name).SetValue(rowData, valueToSet);
         }
 
+        private void ParseToDecimalNullableValue(T rowData, ColumnInfo prop, CellRead value)
+        {
+            decimal? valueToSet = 0;
+
+            if(value.Value == null)
+            {
+                valueToSet = null;
+            }
+            else if (value.Type == XLDataType.Text)
+            {
+                valueToSet = decimal.Parse((string) value.Value);
+            }
+            else if (value.Type == XLDataType.Number)
+            {
+                valueToSet = Convert.ToDecimal(value.Value);
+            }
+            else
+            {
+                ThrowImportColumnParseException(prop, value);
+            }
+
+            rowData.GetType().GetProperty(prop.Name).SetValue(rowData, valueToSet);
+        }
+
         private void ParseToIntValue(T rowData, ColumnInfo prop, CellRead value)
         {
             int valueToSet = 0;
@@ -122,6 +177,31 @@ namespace AutoOpenXml
             {
                 valueToSet = value.Value != null ? Convert.ToInt32(value.Value) : 0;
             } else
+            {
+                ThrowImportColumnParseException(prop, value);
+            }
+
+
+            rowData.GetType().GetProperty(prop.Name).SetValue(rowData, valueToSet);
+        }
+
+        private void ParseToIntNullableValue(T rowData, ColumnInfo prop, CellRead value)
+        {
+            int? valueToSet = 0;
+
+            if (value.Value == null)
+            {
+                valueToSet = null;
+            }
+            else if (value.Type == XLDataType.Text)
+            {
+                valueToSet = int.Parse((string) value.Value);
+            }
+            else if (value.Type == XLDataType.Number)
+            {
+                valueToSet = Convert.ToInt32(value.Value);
+            }
+            else
             {
                 ThrowImportColumnParseException(prop, value);
             }

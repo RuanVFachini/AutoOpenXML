@@ -17,7 +17,7 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
         public void Setup() { }
 
         [Test]
-        public void ShouldExportExcelFileWithNumberColumn()
+        public void ShouldExportExcelFileWithDateTimeColumn()
         {
             var stream = new ExportManagerBuilder<ModelDateTimeProperty>()
                             .Init()
