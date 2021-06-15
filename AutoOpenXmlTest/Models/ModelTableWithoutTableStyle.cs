@@ -5,7 +5,7 @@ using System.Text;
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet("Worksheet1")]
+    [ExportWorkSheet("TableWithOutTableStyle")]
     public class ModelTableWithOutTableStyle
     {
         [ExportColumn("Id", 1)]

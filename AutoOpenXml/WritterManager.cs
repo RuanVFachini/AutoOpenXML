@@ -18,15 +18,14 @@ namespace AutoOpenXml
 
         private void CreateTable()
         {
-            if (TableStyle != null)
-            {
-                var table = ActiveWorksheet.Range(1, 1, Data.Count + 1, Columns.Count).CreateTable();
-                table.Theme = TableStyle;
-            }
+            if (TableStyle == null) return;
             
+            var table = ActiveWorksheet.Range(1, 1, Data.Count + 1, Columns.Count).CreateTable();
+            table.Theme = TableStyle;
+
         }
 
-        internal void WriteHeaders()
+        private void WriteHeaders()
         {
             foreach (var column in Columns)
             {
@@ -38,7 +37,7 @@ namespace AutoOpenXml
             CurrentRowIndex++;
         }
 
-        internal void WriteContentLines()
+        private void WriteContentLines()
         {
             foreach (var rowData in DataToExport)
             {
@@ -62,6 +61,9 @@ namespace AutoOpenXml
                 
             if (type == typeof(int) || type == typeof(int?))
                 cell.DataType = XLDataType.Number;
+            
+            if (type == typeof(long) || type == typeof(long?))
+                cell.DataType = XLDataType.Number;
 
             if (type == typeof(decimal) || type == typeof(decimal?))
                 cell.DataType = XLDataType.Number;
@@ -69,7 +71,7 @@ namespace AutoOpenXml
             if (type == typeof(DateTime) || type == typeof(DateTime?))
                 cell.DataType = XLDataType.DateTime;
 
-            if (mask != null && mask != "")
+            if (!string.IsNullOrEmpty(mask))
                 cell.Style.NumberFormat.Format = mask;
 
             cell.Value = value;

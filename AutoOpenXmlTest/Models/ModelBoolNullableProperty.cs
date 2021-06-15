@@ -24,7 +24,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelBoolNullableProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "BoolNullableProperty";
         public const string FieldName = "Ativo";
         public const string FieldFormat = "";
         public static readonly ModelBoolNullableProperty[] Data = {

@@ -2,7 +2,7 @@
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet("new sheet")]
+    [ExportWorkSheet("HeaderBackgroundColor")]
     public class ModelHeaderBackgroundColor
     {
         [ExportColumn("name label", 1)]

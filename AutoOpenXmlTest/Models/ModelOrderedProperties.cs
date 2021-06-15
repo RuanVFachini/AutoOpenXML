@@ -15,21 +15,21 @@ namespace AutoOpenXmlTest.Models
         [ExportColumn(VariablesModelOrderedProperties.HeightLabel, 4)]
         public decimal Height { get; set; }
         [ExportColumn(VariablesModelOrderedProperties.BirthDateLabel, 3)]
-        public DateTime BrithDate { get; set; }
+        public DateTime BirthDate { get; set; }
 
         public ModelOrderedProperties() { }
-        public ModelOrderedProperties(int id, string name, decimal height, DateTime brithDate)
+        public ModelOrderedProperties(int id, string name, decimal height, DateTime birthDate)
         {
             Id = id;
             Name = name;
             Height = height;
-            BrithDate = brithDate;
+            BirthDate = birthDate;
         }
     }
 
     public static class VariablesModelOrderedProperties
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "OrderedProperties";
         public const string NameLabel = "Nome";
         public const string IdLabel = "Código";
         public const string HeightLabel = "Altura";

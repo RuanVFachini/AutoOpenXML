@@ -23,7 +23,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelIntNullableProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "ModelIntNullableProperty";
         public const string FieldName = "Idade da Pessoa";
         public static readonly ModelIntNullableProperty[] Data = {
             new ModelIntNullableProperty("Joao", 15),

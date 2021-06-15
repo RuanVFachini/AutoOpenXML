@@ -6,7 +6,7 @@ using System.Text;
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet("Worksheet1", "TableStyleDark7")]
+    [ExportWorkSheet("TableWithCustomTableStyle", "TableStyleDark7")]
     public class ModelTableWithCustomTableStyle
     {
         [ExportColumn("Id", 1)]

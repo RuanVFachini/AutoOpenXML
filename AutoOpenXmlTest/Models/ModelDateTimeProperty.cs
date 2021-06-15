@@ -23,7 +23,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelDateTimeProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "DateTimeProperty";
         public const string FieldName = "Aniversário da Pessoa";
         public const string FieldFormat = "dd/mm/yyyy hh:mm:ss";
         public static readonly ModelDateTimeProperty[] Data = {

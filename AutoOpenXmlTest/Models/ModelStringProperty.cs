@@ -24,7 +24,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelStringProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "StringProperty";
         public const string FieldName = "Nome da Pessoa";
         public static readonly ModelStringProperty[] Data = {
             new ModelStringProperty("Joao", 15),

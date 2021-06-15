@@ -71,9 +71,11 @@ https://github.com/RuanVFachini/AutoOpenXML
     -string
     -int
     -bool
+    -long
     -decimal
     -DateTime
     -int?
+    -long?
     -bool?
     -decimal?
     -DateTime?

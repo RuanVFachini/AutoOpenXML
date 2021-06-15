@@ -23,7 +23,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelDateTimeNullableProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "DateTimeNullableProperty";
         public const string FieldName = "Aniversário da Pessoa";
         public const string FieldFormat = "dd/mm/yyyy hh:mm:ss";
         public static readonly ModelDateTimeNullableProperty[] Data = {

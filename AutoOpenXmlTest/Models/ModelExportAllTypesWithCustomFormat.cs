@@ -38,7 +38,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelExportAllTypesWithCustomFormat
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "AllTypesWithCustomFormat";
         public const string IdFieldLabel = "Código";
         public const string IdFieldFormat = "00000";
         public const string PointsFieldLabel = "Pontos";

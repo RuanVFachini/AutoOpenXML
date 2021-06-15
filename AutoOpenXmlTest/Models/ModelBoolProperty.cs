@@ -24,7 +24,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelBoolProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "BoolProperty";
         public const string FieldName = "Ativo";
         public const string FieldFormat = "";
         public static readonly ModelBoolProperty[] Data = {

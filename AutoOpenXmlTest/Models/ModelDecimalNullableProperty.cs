@@ -23,7 +23,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelDecimalNullableProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "DecimalNullableProperty";
         public const string FieldName = "salario da Pessoa";
         public const string FieldFormat = "";
         public static readonly ModelDecimalNullableProperty[] Data = {

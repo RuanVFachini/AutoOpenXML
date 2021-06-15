@@ -30,8 +30,8 @@ namespace AutoOpenXml
 
         private static CustomAttributeData ExtractClassAttributes<T>() where T : new()
         {
-            var validClass = (new T())
-                .GetType()
+                var validClass = (new T())
+                    .GetType()
                 .CustomAttributes
                 .FirstOrDefault(x => x.AttributeType == typeof(ExportWorkSheetAttribute));
 

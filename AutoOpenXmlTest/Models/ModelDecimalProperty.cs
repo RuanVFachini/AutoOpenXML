@@ -23,7 +23,7 @@ namespace AutoOpenXmlTest.Models
 
     public static class VariablesModelDecimalProperty
     {
-        public const string WorksheetName = "Nova Aba";
+        public const string WorksheetName = "DecimalProperty";
         public const string FieldName = "salario da Pessoa";
         public const string FieldFormat = "";
         public static readonly ModelDecimalProperty[] Data = {

@@ -48,7 +48,7 @@ namespace AutoOpenXml
             return rowData
                 .GetType()
                 .GetProperty(prop.Name)
-                .GetValue(rowData);
+                ?.GetValue(rowData);
         }
     }
 }
