@@ -21,7 +21,7 @@ namespace AutoOpenXmlTest.Cases.ExportAllTypesWithCustomFormat
                             .StartExportProcess();
 
             var workbook = new XLWorkbook(stream);
-            workbook.TryGetWorksheet(VariablesModelDateTimeProperty.WorksheetName, out var worksheet);
+            workbook.TryGetWorksheet(VariablesModelExportAllTypesWithCustomFormat.WorksheetName, out var worksheet);
 
             worksheet.Should().NotBeNull();
 

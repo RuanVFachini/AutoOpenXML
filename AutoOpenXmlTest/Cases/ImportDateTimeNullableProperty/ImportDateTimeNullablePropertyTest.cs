@@ -19,15 +19,13 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
         public void ShouldImportDateTimeFieldFromDateColumn()
         {
             var result = new ImportManagerBuilder<ModelDateTimeNullableProperty>()
-                .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
+                .OpenFile(StreamTestFile.GetStreamTestFile(), VariablesModelDateTimeNullableProperty.WorksheetName)
                 .Init()
                 .StartImportProcess();
 
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(2);
-            result[0].Name.Should().BeNull();
             result[0].BirthDay.Should().BeSameDateAs(new DateTime(1991, 08, 28));
-            result[1].Name.Should().BeNull();
             result[1].BirthDay.Should().BeNull();
 
             StreamTestFile.CloseFile();

@@ -18,14 +18,14 @@ namespace AutoOpenXmlTest.Cases.ImportIntProperty
         public void ShouldImportIntFieldFromNumberColumn()
         {
             var result = new ImportManagerBuilder<ModelIntProperty>()
-                .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
+                .OpenFile(StreamTestFile.GetStreamTestFile(), VariablesModelIntProperty.WorksheetName)
                 .Init()
                 .StartImportProcess();
 
             result.Should().NotBeNullOrEmpty();
-            result.Count.Should().Be(1);
-            result[0].Name.Should().BeNull();
+            result.Count.Should().Be(2);
             result[0].Age.Should().Be(18);
+            result[1].Age.Should().Be(0);
 
             StreamTestFile.CloseFile();
         }

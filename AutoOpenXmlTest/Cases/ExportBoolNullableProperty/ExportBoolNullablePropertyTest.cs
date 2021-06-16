@@ -38,8 +38,7 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
                 .BeEquivalentTo(VariablesModelBoolNullableProperty.Data[0].Active);
             worksheet.Cell(3, 5).Value.Should()
                 .BeEquivalentTo(VariablesModelBoolNullableProperty.Data[1].Active);
-            worksheet.Cell(3, 5).Value.Should()
-                .BeEquivalentTo(false);
+            worksheet.Cell(4, 5).Value.Should().Be("");
         }
     }
 }

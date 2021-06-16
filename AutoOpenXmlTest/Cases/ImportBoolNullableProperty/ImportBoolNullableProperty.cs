@@ -18,13 +18,13 @@ namespace AutoOpenXmlTest.Cases.ImportIntProperty
         public void ShouldImportIntFieldFromBooleanColumn()
         {
             var result = new ImportManagerBuilder<ModelBoolNullableProperty>()
-                .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
+                .OpenFile(StreamTestFile.GetStreamTestFile(), VariablesModelBoolNullableProperty.WorksheetName)
                 .Init()
                 .StartImportProcess();
 
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(2);
-            result[1].Name.Should().BeNull();
+            result[0].Active.Should().BeTrue();
             result[1].Active.Should().BeNull();
 
             StreamTestFile.CloseFile();

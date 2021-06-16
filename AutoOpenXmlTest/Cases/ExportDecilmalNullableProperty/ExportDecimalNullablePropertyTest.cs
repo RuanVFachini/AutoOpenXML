@@ -34,6 +34,7 @@ namespace AutoOpenXmlTest.Cases.ExportDecilmalProperty
                 .BeEquivalentTo(VariablesModelDecimalNullableProperty.Data[0].Salary);
             worksheet.Cell(3, 2).Value.Should()
                 .BeEquivalentTo(VariablesModelDecimalNullableProperty.Data[1].Salary);
+            worksheet.Cell(4, 2).Value.Should().Be("");
         }
     }
 }

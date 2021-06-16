@@ -5,11 +5,11 @@ using AutoOpenXml;
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(VariablesModelDateTimeProperty.WorksheetName)]
+    [ExportWorkSheet(VariablesModelDateTimeNullableProperty.WorksheetName)]
     public class ModelDateTimeNullableProperty
     {
         public string Name { get; set; }
-        [ExportColumn(VariablesModelDateTimeProperty.FieldName, 4)]
+        [ExportColumn(VariablesModelDateTimeNullableProperty.FieldName, 4)]
         public DateTime? BirthDay { get; set; }
 
         public ModelDateTimeNullableProperty() { }

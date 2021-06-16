@@ -27,7 +27,7 @@ namespace AutoOpenXmlTest.Cases.ExportStringProperty
                             .StartExportProcess();
 
             var workbook = new XLWorkbook(stream);
-            workbook.TryGetWorksheet("new sheet", out var worksheet);
+            workbook.TryGetWorksheet("HeaderBackgroundColor", out var worksheet);
 
             worksheet.Should().NotBeNull();
 

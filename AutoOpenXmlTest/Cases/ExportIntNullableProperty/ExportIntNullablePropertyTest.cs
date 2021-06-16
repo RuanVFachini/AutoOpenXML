@@ -34,6 +34,7 @@ namespace AutoOpenXmlTest.Cases.ExportIntProperty
                 .BeEquivalentTo(VariablesModelIntNullableProperty.Data[0].Age);
             worksheet.Cell(3, 3).Value.Should()
                 .BeEquivalentTo(VariablesModelIntNullableProperty.Data[1].Age);
+            worksheet.Cell(4, 3).Value.Should().Be("");
         }
     }
 }

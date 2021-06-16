@@ -18,14 +18,14 @@ namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
         public void ShouldImportDecimalFieldFromNumberColumn()
         {
             var result = new ImportManagerBuilder<ModelDecimalProperty>()
-                .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
+                .OpenFile(StreamTestFile.GetStreamTestFile(), VariablesModelDecimalProperty.WorksheetName)
                 .Init()
                 .StartImportProcess();
 
             result.Should().NotBeNullOrEmpty();
-            result.Count.Should().Be(1);
-            result[0].Name.Should().BeNull();
+            result.Count.Should().Be(2);
             result[0].Salary.Should().Be((decimal) 12233.45);
+            result[1].Salary.Should().Be(0);
 
             StreamTestFile.CloseFile();
         }

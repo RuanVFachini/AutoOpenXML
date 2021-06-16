@@ -18,15 +18,13 @@ namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
         public void ShouldImportDecimalFieldFromNumberColumn()
         {
             var result = new ImportManagerBuilder<ModelDecimalNullableProperty>()
-                .OpenFile(StreamTestFile.GetStreamTestFile(), "Planilha1")
+                .OpenFile(StreamTestFile.GetStreamTestFile(), VariablesModelDecimalNullableProperty.WorksheetName)
                 .Init()
                 .StartImportProcess();
 
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(2);
-            result[0].Name.Should().BeNull();
             result[0].Salary.Should().Be((decimal) 12233.45);
-            result[1].Name.Should().BeNull();
             result[1].Salary.Should().BeNull();
 
             StreamTestFile.CloseFile();

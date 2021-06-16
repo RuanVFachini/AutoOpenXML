@@ -35,7 +35,7 @@ namespace AutoOpenXmlTest.Cases.ExportDateTimeProperty
                 .BeEquivalentTo(VariablesModelDateTimeNullableProperty.Data[0].BirthDay);
             worksheet.Cell(3, 4).Value.Should()
                 .BeEquivalentTo(VariablesModelDateTimeNullableProperty.Data[1].BirthDay);
-            worksheet.Cell(3, 5).Value.Should()
+            worksheet.Cell(4, 4).Value.Should()
                 .BeEquivalentTo("");
         }
     }

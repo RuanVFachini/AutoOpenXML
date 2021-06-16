@@ -49,7 +49,7 @@ namespace AutoOpenXml
             else if (prop.Type == typeof(int))
                 ParseToIntValue(rowData, prop, value);
             else if (prop.Type == typeof(int?))
-                SetNullableColumnValue(rowData, prop, value, ParseToLongValue);
+                SetNullableColumnValue(rowData, prop, value, ParseToIntValue);
             else if (prop.Type == typeof(long))
                 ParseToIntValue(rowData, prop, value);
             else if (prop.Type == typeof(long?))

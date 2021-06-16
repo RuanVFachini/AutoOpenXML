@@ -22,4 +22,10 @@
     <Folder Include="Cases\Export\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="Resources\input.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

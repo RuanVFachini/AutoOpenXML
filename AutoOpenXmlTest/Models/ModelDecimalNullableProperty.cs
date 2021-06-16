@@ -5,7 +5,7 @@ using AutoOpenXml;
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(VariablesModelDecimalProperty.WorksheetName)]
+    [ExportWorkSheet(VariablesModelDecimalNullableProperty.WorksheetName)]
     public class ModelDecimalNullableProperty
     {
         public string Name { get; set; }
