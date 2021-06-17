@@ -15,6 +15,7 @@ https://github.com/RuanVFachini/AutoOpenXML
     internal class ModelDateTimeProperty
     {
         public string Name { get; set; }
+
         [ExportColumn(Variables.FieldName, 1)]
         public DateTime BirthDay { get; set; }
 
@@ -73,11 +74,13 @@ https://github.com/RuanVFachini/AutoOpenXML
     -bool
     -long
     -decimal
+    -long
     -DateTime
     -int?
     -long?
     -bool?
     -decimal?
+    -long?
     -DateTime?
 
 ## 3 Example
@@ -121,6 +124,8 @@ https://github.com/RuanVFachini/AutoOpenXML
 
 ### 3.1 Export Class Exemple:
 
+#### 3.1.1 Export Once Worksheet:
+
 <code>
 
     var stream = new ExportManagerBuilder<ModelOrderedProperties>()
@@ -132,7 +137,23 @@ https://github.com/RuanVFachini/AutoOpenXML
 
 </code>
 
-### 3.1 Import Class Exemple:
+#### 3.1.2 Export Many Worksheet:
+
+<code>
+
+    var stream = new MultiExportManagerBuilder()
+                        .Init()
+                        .SetData(VariablesModelDateTimeProperty.Data)
+                        .SetData(VariablesModelDecimalProperty.Data)
+                        .StartExportProcess();
+
+    var workbook = new XLWorkbook(stream);
+
+</code>
+
+
+
+### 3.2 Import Class Exemple:
 
 <code>
 

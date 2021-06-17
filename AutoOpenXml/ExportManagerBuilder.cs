@@ -45,11 +45,11 @@ namespace AutoOpenXml
             return this;
         }
 
-        public ExportManagerBuilder<T> SetData(List<T> data)
+        public ExportManagerBuilder<T> SetData(IList<T> data)
         {
             if (data.Count == 0) throw new EmptyObjectListToExportException();
 
-            Data = data;
+            Data = data.ToList();
             return this;
         }
 
