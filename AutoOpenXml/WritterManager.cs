@@ -29,7 +29,7 @@ namespace AutoOpenXml
         {
             foreach (var column in Columns)
             {
-                SetCellValue(column.Index, column.Label, typeof(string));
+                SetCellValue(column.Index, column.Label, TypesEnum.String);
 
                 SetCellBackgroundColor(column.Index, column.HeaderBackgroundColor);
             }
@@ -49,26 +49,26 @@ namespace AutoOpenXml
                 CurrentRowIndex++;
             }
         }
-        private void SetCellValue(int columnIndex, Object value, Type type, string mask = null)
+        private void SetCellValue(int columnIndex, Object value, TypesEnum type, string mask = null)
         {
             var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
 
-            if (type == typeof(string))
+            if (type == TypesEnum.String)
                 cell.DataType = XLDataType.Text;
 
-            if (type == typeof(bool) || type == typeof(bool?))
+            if (type == TypesEnum.Bool || type == TypesEnum.NullableBool)
                 cell.DataType = XLDataType.Boolean;
                 
-            if (type == typeof(int) || type == typeof(int?))
+            if (type == TypesEnum.Int || type == TypesEnum.NullableInt)
                 cell.DataType = XLDataType.Number;
             
-            if (type == typeof(long) || type == typeof(long?))
+            if (type == TypesEnum.Long || type == TypesEnum.NullableLong)
                 cell.DataType = XLDataType.Number;
 
-            if (type == typeof(decimal) || type == typeof(decimal?))
+            if (type == TypesEnum.Decimal || type == TypesEnum.NullableDecimal)
                 cell.DataType = XLDataType.Number;
 
-            if (type == typeof(DateTime) || type == typeof(DateTime?))
+            if (type == TypesEnum.DateTime || type == TypesEnum.NullableDateTime)
                 cell.DataType = XLDataType.DateTime;
 
             if (!string.IsNullOrEmpty(mask))

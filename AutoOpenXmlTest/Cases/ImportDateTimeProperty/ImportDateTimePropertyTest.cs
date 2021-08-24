@@ -16,6 +16,7 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
         public void Setup() { }
 
         [Test]
+        [Parallelizable(ParallelScope.None)]
         public void ShouldImportDateTimeFieldFromDateColumn()
         {
             var result = new ImportManagerBuilder<ModelDateTimeProperty>()
@@ -26,7 +27,7 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(2);
             result[0].BirthDay.Should().BeSameDateAs(new DateTime(1991, 08, 28));
-            result[1].BirthDay.Should().BeSameDateAs(new DateTime(1, 1, 1));
+            result[1].BirthDay.Should().BeSameDateAs(new DateTime(2021, 1, 1));
 
             StreamTestFile.CloseFile();
         }

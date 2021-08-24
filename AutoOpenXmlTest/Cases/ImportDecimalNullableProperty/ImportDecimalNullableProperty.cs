@@ -15,6 +15,7 @@ namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
         public void Setup() { }
 
         [Test]
+        [Parallelizable(ParallelScope.None)]
         public void ShouldImportDecimalFieldFromNumberColumn()
         {
             var result = new ImportManagerBuilder<ModelDecimalNullableProperty>()

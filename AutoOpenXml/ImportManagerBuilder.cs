@@ -35,7 +35,6 @@ namespace AutoOpenXml
             StringDateFormat = stringDateFormat;
             return this;
         }
-        
 
         public IList<T> StartImportProcess()
         {

@@ -16,12 +16,12 @@ namespace AutoOpenXml
         internal List<T> Data { get; set; } = null;
         internal XLTableTheme TableStyle { get; set; }
         internal List<Dictionary<string, DataCellValue>> DataToExport { get; set; }
-        internal IList<ColumnInfo> Columns { get; set; }
+        internal IList<ColumnInfo<T>> Columns { get; set; }
 
         internal void ProcessData()
         {
             DataToExport = new List<Dictionary<string, DataCellValue>>();
-            Columns = Properties.GetInfoColumns(OperatinoEnum.Write);
+            Columns = Properties.GetInfoColumns<T>(OperatinoEnum.Write);
 
             foreach (var rowData in Data)
             {
@@ -32,7 +32,7 @@ namespace AutoOpenXml
                     var columnValue = new DataCellValue()
                     {
                         Type = prop.Type,
-                        Value = GetColumnValue(rowData, prop)
+                        Value = prop.GetValueFunc.Invoke(rowData)
                     };
 
                     newLine.Add(prop.Label, columnValue);
@@ -41,14 +41,6 @@ namespace AutoOpenXml
                 DataToExport.Add(newLine);
             }
             
-        }
-
-        private Object GetColumnValue(T rowData, ColumnInfo prop)
-        {
-            return rowData
-                .GetType()
-                .GetProperty(prop.Name)
-                ?.GetValue(rowData);
         }
     }
 }
