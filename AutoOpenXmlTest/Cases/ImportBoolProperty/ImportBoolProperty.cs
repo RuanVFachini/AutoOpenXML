@@ -15,6 +15,7 @@ namespace AutoOpenXmlTest.Cases.ImportIntProperty
         public void Setup() { }
 
         [Test]
+        [Parallelizable(ParallelScope.None)]
         public void ShouldImportIntFieldFromBooleanColumn()
         {
             var result = new ImportManagerBuilder<ModelBoolProperty>()

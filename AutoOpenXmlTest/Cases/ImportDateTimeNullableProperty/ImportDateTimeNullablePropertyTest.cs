@@ -16,6 +16,7 @@ namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
         public void Setup() { }
 
         [Test]
+        [Parallelizable(ParallelScope.None)]
         public void ShouldImportDateTimeFieldFromDateColumn()
         {
             var result = new ImportManagerBuilder<ModelDateTimeNullableProperty>()

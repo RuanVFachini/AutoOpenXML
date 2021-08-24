@@ -15,6 +15,7 @@ namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
         public void Setup() { }
 
         [Test]
+        [Parallelizable(ParallelScope.None)]
         public void ShouldImportDecimalFieldFromNumberColumn()
         {
             var result = new ImportManagerBuilder<ModelDecimalProperty>()
@@ -24,8 +25,8 @@ namespace AutoOpenXmlTest.Cases.ImportDecimalProperty
 
             result.Should().NotBeNullOrEmpty();
             result.Count.Should().Be(2);
-            result[0].Salary.Should().Be((decimal) 12233.45);
-            result[1].Salary.Should().Be(0);
+            result[0].Salary.Should().Be(12233.45M);
+            result[1].Salary.Should().Be(125.24M);
 
             StreamTestFile.CloseFile();
         }

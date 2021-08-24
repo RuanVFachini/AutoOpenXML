@@ -15,6 +15,7 @@ namespace AutoOpenXmlTest.Cases.ImportIntProperty
         public void Setup() { }
 
         [Test]
+        [Parallelizable(ParallelScope.None)]
         public void ShouldImportIntFieldFromNumberColumn()
         {
             var result = new ImportManagerBuilder<ModelIntNullableProperty>()
