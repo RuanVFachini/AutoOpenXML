@@ -30,18 +30,13 @@ namespace AutoOpenXml
             {
                 columnIndex = GetPropIndex(operatino, prop, columnIndex);
 
-                var instance = Expression.Parameter(prop.DeclaringType, "i");
-                var property = Expression.Property(instance, prop);
-                var convert = Expression.TypeAs(property, typeof(object));
-                var propertyFunc = (Func<T, object>)Expression.Lambda(convert, instance).Compile();
-                
                 result.Add(new ColumnInfo<T>() 
                 {
                     Label = Generics.GetColumnCustomProperty<string>(prop, 0),
                     Index = columnIndex,
                     Type = GetTypeEnum(prop.PropertyType),
                     Name = prop.Name,
-                    GetValueFunc = propertyFunc,
+                    GetValueFunc = Reflect.Getter(typeof(T), prop.Name),
                     SetValueFunc = Reflect.Setter(typeof(T), prop.Name),
                     Mask = Generics.GetColumnCustomProperty<string>(prop, 2),
                     HeaderBackgroundColor = GetPropHeaderBackgroundColor(prop)

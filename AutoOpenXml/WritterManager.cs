@@ -1,6 +1,7 @@
 ﻿using ClosedXML.Excel;
 using System;
 using System.Drawing;
+using AutoOpenXml.Models;
 
 namespace AutoOpenXml
 {
@@ -13,6 +14,7 @@ namespace AutoOpenXml
         {
             CreateTable();
             WriteHeaders();
+            FormatColumns();
             WriteContentLines();
         }
 
@@ -29,12 +31,22 @@ namespace AutoOpenXml
         {
             foreach (var column in Columns)
             {
-                SetCellValue(column.Index, column.Label, TypesEnum.String);
+                var cell = ActiveWorksheet.Cell(CurrentRowIndex, column.Index);
+                cell.DataType = XLDataType.Text;
+                cell.Value = column.Label;
 
                 SetCellBackgroundColor(column.Index, column.HeaderBackgroundColor);
             }
 
             CurrentRowIndex++;
+        }
+        
+        internal void FormatColumns()
+        {
+            foreach (var column in Columns)
+            {
+                FormatColumn(column);
+            }
         }
 
         private void WriteContentLines()
@@ -44,37 +56,38 @@ namespace AutoOpenXml
                 foreach (var column in Columns)
                 {
                     rowData.TryGetValue(column.Label, out var value);
-                    SetCellValue(column.Index, value.Value, value.Type, column.Mask);
+                    var cell = ActiveWorksheet.Cell(CurrentRowIndex, column.Index);
+                    cell.Value = value.Value;
                 }
                 CurrentRowIndex++;
             }
         }
-        private void SetCellValue(int columnIndex, Object value, TypesEnum type, string mask = null)
+        private void FormatColumn(ColumnInfo<T> column)
         {
-            var cell = ActiveWorksheet.Cell(CurrentRowIndex, columnIndex);
-
-            if (type == TypesEnum.String)
-                cell.DataType = XLDataType.Text;
-
-            if (type == TypesEnum.Bool || type == TypesEnum.NullableBool)
-                cell.DataType = XLDataType.Boolean;
-                
-            if (type == TypesEnum.Int || type == TypesEnum.NullableInt)
-                cell.DataType = XLDataType.Number;
+            var range = ActiveWorksheet.Range(2, column.Index, Data.Count + 1, column.Index);
             
-            if (type == TypesEnum.Long || type == TypesEnum.NullableLong)
-                cell.DataType = XLDataType.Number;
+            if (!string.IsNullOrEmpty(column.Mask))
+                range.Style.NumberFormat.SetFormat(column.Mask);
+            
+            ActiveWorksheet.Column(column.Index).AdjustToContents();
+            
+            if (column.Type == TypesEnum.String)
+                range.DataType = XLDataType.Text;
 
-            if (type == TypesEnum.Decimal || type == TypesEnum.NullableDecimal)
-                cell.DataType = XLDataType.Number;
+            if (column.Type == TypesEnum.Bool || column.Type == TypesEnum.NullableBool)
+                range.DataType = XLDataType.Boolean;
+                
+            if (column.Type == TypesEnum.Int || column.Type == TypesEnum.NullableInt)
+                range.DataType = XLDataType.Number;
+            
+            if (column.Type == TypesEnum.Long || column.Type == TypesEnum.NullableLong)
+                range.DataType = XLDataType.Number;
 
-            if (type == TypesEnum.DateTime || type == TypesEnum.NullableDateTime)
-                cell.DataType = XLDataType.DateTime;
+            if (column.Type == TypesEnum.Decimal || column.Type == TypesEnum.NullableDecimal)
+                range.DataType = XLDataType.Number;
 
-            if (!string.IsNullOrEmpty(mask))
-                cell.Style.NumberFormat.Format = mask;
-
-            cell.Value = value;
+            if (column.Type == TypesEnum.DateTime || column.Type == TypesEnum.NullableDateTime)
+                range.DataType = XLDataType.DateTime;
         }
 
         private void SetCellBackgroundColor(int columnIndex, Color color)

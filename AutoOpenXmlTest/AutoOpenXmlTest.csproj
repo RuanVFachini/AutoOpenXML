@@ -19,13 +19,18 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Cases\Export\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Update="Resources\input.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Remove="Cases\Export\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Cases\Export\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Cases\Export\**" />
   </ItemGroup>
 
 </Project>
