@@ -1,11 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 using AutoOpenXml;
 
 namespace AutoOpenXmlTest.Models
 {
-    [ExportWorkSheet(VariablesModelOrderedProperties.WorksheetName)]
+    [ExportWorkSheet(VariablesModelOrderedProperties.WorksheetName, "TableStyleMedium26")]
     public class ModelOrderedProperties
     {
         [ExportColumn(VariablesModelOrderedProperties.IdLabel, 2)]
