@@ -61,6 +61,11 @@ namespace AutoOpenXml
                 }
                 CurrentRowIndex++;
             }
+
+            foreach (var column in Columns)
+            {
+                ActiveWorksheet.Column(column.Index).AdjustToContents();
+            }
         }
         private void FormatColumn(ColumnInfo<T> column)
         {
@@ -68,8 +73,6 @@ namespace AutoOpenXml
             
             if (!string.IsNullOrEmpty(column.Mask))
                 range.Style.NumberFormat.SetFormat(column.Mask);
-            
-            ActiveWorksheet.Column(column.Index).AdjustToContents();
             
             if (column.Type == TypesEnum.String)
                 range.DataType = XLDataType.Text;
