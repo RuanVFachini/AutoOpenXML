@@ -4,7 +4,6 @@ using System.Diagnostics;
 using System.Linq;
 using AutoOpenXml;
 using AutoOpenXmlTest.Models;
-using DocumentFormat.OpenXml.Bibliography;
 using NUnit.Framework;
 
 namespace AutoOpenXmlTest.Cases.Performance
@@ -19,9 +18,9 @@ namespace AutoOpenXmlTest.Cases.Performance
         {
             //Arrange
             var data = MockRamdomData();
-            
+
             var watch = new Stopwatch();
-            
+
             watch.Start();
             var stream = new ExportManagerBuilder<ModelOrderedProperties>()
                 .Init()
@@ -30,8 +29,6 @@ namespace AutoOpenXmlTest.Cases.Performance
 
             watch.Stop();
             var time = watch.Elapsed.Seconds;
-            var a = 1;
-
         }
 
         private IEnumerable<ModelOrderedProperties> MockRamdomData()

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace AutoOpenXml
+﻿namespace AutoOpenXml
 {
     [System.AttributeUsage(System.AttributeTargets.Property)]
     public class ExportColumnAttribute : System.Attribute

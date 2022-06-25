@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using System;
 using System.Drawing;
 using AutoOpenXml.Models;
 
@@ -21,10 +20,9 @@ namespace AutoOpenXml
         private void CreateTable()
         {
             if (TableStyle == null) return;
-            
+
             var table = ActiveWorksheet.Range(1, 1, Data.Count + 1, Columns.Count).CreateTable();
             table.Theme = TableStyle;
-
         }
 
         private void WriteHeaders()

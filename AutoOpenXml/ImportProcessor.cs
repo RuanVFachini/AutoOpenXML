@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Reflection;
 using AutoOpenXml.Exceptions;
 using AutoOpenXml.Extensions;
 using AutoOpenXml.Models;
 using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Wordprocessing;
 
 namespace AutoOpenXml
 {
@@ -67,7 +65,7 @@ namespace AutoOpenXml
 
         private void SetNullableColumnValue(T rowData, ColumnInfo<T> prop, CellRead value, Action<T,ColumnInfo<T>,CellRead> action)
         {
-            if (value.Value == null || value.Value == string.Empty)
+            if (value.Value == null || (string)value.Value == string.Empty)
                 prop.SetValueFunc(rowData, null);
             else
                 action.Invoke(rowData, prop, value);

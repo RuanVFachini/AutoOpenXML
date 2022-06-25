@@ -4,9 +4,6 @@ using AutoOpenXmlTest.Utils;
 using FluentAssertions;
 using NUnit.Framework;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 
 namespace AutoOpenXmlTest.Cases.ImportDateTimeProperty
 {
