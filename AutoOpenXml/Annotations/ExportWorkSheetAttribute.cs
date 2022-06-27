@@ -1,6 +1,4 @@
-﻿using ClosedXML.Excel;
-
-namespace AutoOpenXml
+﻿namespace AutoOpenXml
 {
     [System.AttributeUsage(System.AttributeTargets.Class)]
     public class ExportWorkSheetAttribute : System.Attribute

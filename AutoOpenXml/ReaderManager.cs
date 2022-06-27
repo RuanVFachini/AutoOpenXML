@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using AutoOpenXml.Models;
+﻿using AutoOpenXml.Models;
 using ClosedXML.Excel;
 
 namespace AutoOpenXml
@@ -30,7 +27,7 @@ namespace AutoOpenXml
             return new CellRead()
             {
                 Type = cell.DataType,
-                Value = cell.Value ?? null
+                Value = (cell.HasFormula ? cell.CachedValue : cell.Value) ?? null
             };
         }
     }

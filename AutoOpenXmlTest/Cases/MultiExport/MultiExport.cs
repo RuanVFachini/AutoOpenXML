@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using AutoOpenXml;
+﻿using AutoOpenXml;
 using AutoOpenXmlTest.Models;
 using ClosedXML.Excel;
 using FluentAssertions;

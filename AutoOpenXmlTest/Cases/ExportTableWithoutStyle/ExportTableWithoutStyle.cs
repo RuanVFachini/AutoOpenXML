@@ -1,12 +1,8 @@
 ﻿using AutoOpenXml;
 using AutoOpenXmlTest.Models;
 using AutoOpenXmlTest.Utils;
-using ClosedXML.Excel;
 using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace AutoOpenXmlTest.Cases.ExportTableWithDefaultStyle
 {

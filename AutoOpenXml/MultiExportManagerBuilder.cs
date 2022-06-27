@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 using ClosedXML.Excel;
-using DocumentFormat.OpenXml.Math;
 
 namespace AutoOpenXml
 {
