@@ -168,9 +168,10 @@ https://github.com/RuanVFachini/AutoOpenXML
 
 * DateTime properties will be exported like DateTime Excel column format. For importation the same column type is required.
 
-## 5 Release Update
+## 5 Release notes:
 
-### 2
-
-  - ####2.0.1
+### 2.0.x
+  - #### 2.0.1
     - Adjust To Content [Fix]
+  - #### 2.0.2
+    - Formula import support [Feat]
