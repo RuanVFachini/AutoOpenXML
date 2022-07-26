@@ -65,7 +65,9 @@ namespace AutoOpenXml
 
         private void SetNullableColumnValue(T rowData, ColumnInfo<T> prop, CellRead value, Action<T,ColumnInfo<T>,CellRead> action)
         {
-            if (value.Value == null || (string)value.Value == string.Empty)
+            var hasNoValue = value.Value == null || value.Value == string.Empty;
+
+            if (hasNoValue)
                 prop.SetValueFunc(rowData, null);
             else
                 action.Invoke(rowData, prop, value);
