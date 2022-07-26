@@ -14,31 +14,27 @@ namespace AutoOpenXml
         public ExportManagerBuilder<T> Init()
         {
             Workbook = new XLWorkbook();
-
-            Properties = CommonManager.ExtractReferenceMapedProperties<T>();
-
-            var worksheetName = CommonManager.ExtractWorksheetName<T>();
-
             TableStyle = CommonManager.ExtractTableStyle<T>();
 
+            BaseConfiguration();
+
+            return this;
+        }
+
+        private void BaseConfiguration()
+        {
+            Properties = CommonManager.ExtractReferenceMapedProperties<T>();
+            var worksheetName = CommonManager.ExtractWorksheetName<T>();
             Workbook.Worksheets.Add(worksheetName);
             Workbook.Worksheets.TryGetWorksheet(worksheetName, out var activeWorkshet);
             ActiveWorksheet = activeWorkshet;
-
-            return this;
         }
 
         public ExportManagerBuilder<T> UseWorkBook(IXLWorkbook workbook)
         {
             Workbook = workbook;
 
-            Properties = CommonManager.ExtractReferenceMapedProperties<T>();
-
-            var worksheetName = CommonManager.ExtractWorksheetName<T>();
-
-            Workbook.Worksheets.Add(worksheetName);
-            Workbook.Worksheets.TryGetWorksheet(worksheetName, out var activeWorkshet);
-            ActiveWorksheet = activeWorkshet;
+            BaseConfiguration();
 
             return this;
         }

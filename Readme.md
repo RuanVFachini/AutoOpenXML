@@ -175,3 +175,5 @@ https://github.com/RuanVFachini/AutoOpenXML
     - Adjust To Content [Fix]
   - #### 2.0.2
     - Formula import support [Feat]
+  - #### 2.0.3
+    - Import: not string fields: cast to string failure [Fix]
